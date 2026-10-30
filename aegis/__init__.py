@@ -1,5 +1,5 @@
 """
-AegisData AI - Autonomous Self-Healing Data Pipeline & Plain-English Analytics Engine
+AutoHeal AI - Autonomous Self-Healing Data Pipeline & Plain-English Analytics Engine
 """
 
 from .config import PipelineConfig
@@ -8,7 +8,7 @@ from .healer import SelfHealingEngine
 from .ledger import HealingLedger, HealingAction
 from .insights import PlainEnglishInsightEngine
 from .visualizer import VisualAnalyticsGenerator
-from .pipeline import AegisPipeline
+from .pipeline import AutoHealPipeline
 from .mock_data import CorruptedDataGenerator
 
 __all__ = [
@@ -19,6 +19,9 @@ __all__ = [
     "HealingAction",
     "PlainEnglishInsightEngine",
     "VisualAnalyticsGenerator",
-    "AegisPipeline",
+    "AutoHealPipeline",
     "CorruptedDataGenerator"
 ]
+
+# Backward compatibility alias
+AegisPipeline = AutoHealPipeline

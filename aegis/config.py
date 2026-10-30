@@ -1,5 +1,5 @@
 """
-AegisData AI - Pipeline Configuration
+AutoHeal AI - Pipeline Configuration
 Autonomous Self-Healing Data Pipeline & Plain-English Analytics Engine
 """
 

@@ -1,5 +1,6 @@
 """
-AegisData AI - Multi-Vector Corruption Detector
+AutoHeal AI - Anomaly & Corruption Detection Engine
+# Authored by: Rudra & Deepak
 Automatically scans datasets for structural, type, statistical, and missingness anomalies.
 """
 

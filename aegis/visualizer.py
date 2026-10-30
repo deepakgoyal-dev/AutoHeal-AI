@@ -1,5 +1,6 @@
 """
-AegisData AI - Visual Analytics Generator
+AutoHeal AI - Visual Analytics Generator
+# Authored by: Riddhi Garg & Deepak
 Generates self-contained, interactive HTML5 dashboards with zero external JS dependencies.
 Conforms with Antigravity Generative UI principles and Tailwind CSS styling.
 """
@@ -153,7 +154,7 @@ class VisualAnalyticsGenerator:
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AegisData AI - Autonomous Self-Healing Analytics</title>
+  <title>AutoHeal AI - Autonomous Self-Healing Analytics</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     :root {{
@@ -224,7 +225,7 @@ class VisualAnalyticsGenerator:
           </div>
           <div>
             <div class="flex items-center gap-2">
-              <h1 class="text-2xl font-bold tracking-tight text-white">AegisData AI</h1>
+              <h1 class="text-2xl font-bold tracking-tight text-white">AutoHeal AI</h1>
               <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Autonomous Mode: Active</span>
             </div>
             <p class="text-sm text-gray-400 mt-0.5">Self-Healing Data Pipeline & Plain-English Intelligence Engine</p>
@@ -521,7 +522,7 @@ class VisualAnalyticsGenerator:
   </main>
 
   <footer class="max-w-7xl mx-auto mt-12 text-center text-xs text-gray-500 pb-8">
-    AegisData AI Autonomous Pipeline &bull; Zero Human Intervention Engine &bull; Antigravity Runtime
+    AutoHeal AI Autonomous Pipeline &bull; Zero Human Intervention Engine &bull; Antigravity Runtime
   </footer>
 
   <!-- Embedded Telemetry Data -->

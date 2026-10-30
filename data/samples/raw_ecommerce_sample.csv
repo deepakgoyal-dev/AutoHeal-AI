@@ -1,0 +1,206 @@
+ Order_ID ,Customer_ID,Transaction_Date,Product_Category,Sales_Region,Unit_Price,Quantity_Ordered,Discount_Rate,Shipping_Days,Payment_Method,Customer_Rating
+ORD-10000,CUST-157,2023-02-14 18:00:00,Electronics,Asia Pacific,$384.37,1,20.3,5,PayPal,3.8
+ORD-10001,CUST-115,29/11/2023,Electronics,north america,680.62,1,16.8,6,PayPal,4.1
+ORD-10002,CUST-212,"May 23, 2023",Beauty & Care,Asia Pacific,269.2,2, 20.9% ,3,Credit Card,3.4
+ORD-10003,CUST-272,1674514800,Electronics,North America,null,3,18.1,7,Apple Pay,3.9
+ORD-10004,CUST-163,2023/10/23,electrnics,North America,292.85,5,26.6,3,Bank Wire,4.4
+ORD-10005,CUST-123,2023-11-22 11:00:00,Home & Kitchen,Asia Pacific,301.53,1,,4,Credit Card,3.3
+ORD-10006,CUST-281,25/03/2023,Home & Kitchen,Asia Pacific,219.06,2, 16.0% ,2,Credit Card,3.8
+ORD-10007,CUST-385,"May 18, 2023",Home & Kitchen,Asia Pacific,91.73,1,24.2,4,Credit Card,N/A
+ORD-10008,CUST-390,1683500400,Apparel,Europe,59.56,8,4.3,2,Apple Pay,4.1
+ORD-10009,CUST-234,2023/01/25,Sports & Outdoors,Latin America,136.27,2,15.3,1,Apple Pay,3.3
+ORD-10010,CUST-181,2023-01-06 21:00:00,Beauty & Care,North America,142.84,4, 15.9% ,5,Apple Pay,4.4
+ORD-10011,CUST-374,15/05/2023,Apparel,Asia Pacific,49.35,3,13.6,6,Credit Card,4.5
+ORD-10012,CUST-359,"Sep 29, 2023",Electronics,Asia Pacific,52716.41,2,16.2,181,PayPal,4.2
+ORD-10013,CUST-350,1697594400,Electronics,North America,1072.66,3,7.2,2,Bank Wire,3.2
+ORD-10014,CUST-348,2023/11/07,Electronics,Europe,,2, 8.0% ,7,PayPal,4.9
+ORD-10015,CUST-376,2023-08-20 03:00:00,Home & Kitchen,Asia Pacific,$348.38,3,13.1,5,Apple Pay,3.5
+ORD-10016,CUST-132,31/01/2023,Apparel,North America,78.84,1,2.1,6,PayPal,3.1
+ORD-10017,CUST-116,"Oct 20, 2023",Apparel,North America,47.85,8,6.4,2,PayPal,3.9
+ORD-10018,CUST-342,1693263600,Beauty & Care,Europe,47.47,4, 10.6% ,4,Credit Card,3.1
+ORD-10019,CUST-150,2023/10/02,Electronics,N. America,990.62,1,7.5,2,Bank Wire,3.3
+ORD-10020,CUST-193,2023-10-09 03:00:00,Apparel,Latin America,€ 107.45,2,13.3,7,PayPal,3.1
+ORD-10021,CUST-376,25/07/2023,Electronics,North America,324.63,4,14.4,7,PayPal,undefined
+ORD-10022,CUST-101,"Mar 21, 2023",Beauty & Care,Asia Pacific,110.56,5,null,4,Apple Pay,3.6
+ORD-10023,CUST-129,1695963600,Sports & Outdoors,North America,34.15,5,14.3,7,Bank Wire,3.1
+ORD-10024,CUST-360,2023/05/07,Electronics,Europe,774.79,2,12.1,5,Credit Card,4.2
+ORD-10025,CUST-141,2023-03-09 21:00:00,Beauty & Care,Asia Pacific,??,3,7.2,4,Bank Wire,4.3
+ORD-10026,CUST-334,17/09/2023,ELECTR,North America,65.83,2, 2.2% ,2,Credit Card,3.3
+ORD-10027,CUST-278,"Jun 04, 2023",Electronics,Europe,449.24,4,25.0,6,Bank Wire,5.0
+ORD-10028,CUST-370,1696996800,Electronics,Asia Pacific,1135.88,2,7.9,1,Credit Card,3.5
+ORD-10029,CUST-207,2023/01/27,Apparel,Europe,70.54,5,27.2,7,Bank Wire,4.3
+ORD-10030,CUST-241,2023-10-10 22:00:00,Electronics,North America,$959.68,3, 4.8% ,4,Bank Wire,3.9
+ORD-10031,CUST-104,09/08/2023,Electronics,North America,722.87,3,17.5,2,PayPal,3.1
+ORD-10032,CUST-286,"Jul 28, 2023",Electronics,Asia Pacific,866.17,1,10.6,5,PayPal,4.5
+ORD-10033,CUST-221,1702162800,Home & Kitchen,Europe,23.3,3,23.5,4,Apple Pay,4.6
+ORD-10034,CUST-236,2023/08/24,Home & Kitchen,North America,307.18,4, 6.7% ,7,Apple Pay,3.6
+ORD-10035,CUST-216,2023-05-23 11:00:00,Home & Kitchen,North America,148.49,3,25.9,7,PayPal,undefined
+ORD-10036,CUST-304,20/01/2023,Sports & Outdoors,Asia Pacific,null,3,5.4,3,Credit Card,4.2
+ORD-10037,CUST-276,"Aug 12, 2023",Apparel,North Amerca,58.52,4,7.6,6,Credit Card,4.0
+ORD-10038,CUST-375,1678057200,Home & Kitchen,Asia Pacific,38.44,3, 18.7% ,6,Apple Pay,4.8
+ORD-10039,CUST-359,2023/08/04,Apparel,Latin America,60.24,5,??,2,Bank Wire,4.9
+ORD-10040,CUST-189,2023-08-09 18:00:00,Sports & Outdoors,Asia Pacific,€ 198.56,1,9.1,2,Apple Pay,4.2
+ORD-10041,CUST-264,28/03/2023,Beauty & Care,Latin America,241.34,5,14.2,7,Apple Pay,3.2
+ORD-10042,CUST-363,"Apr 12, 2023",Sports & Outdoors,Asia Pacific,289.17,2, 20.2% ,2,Credit Card,3.0
+ORD-10043,CUST-225,1689519600,Beauty & Care,North America,153.84,5,5.8,6,Apple Pay,3.8
+ORD-10044,CUST-175,2023/03/04,Electronics,North America,379.78,4,1.5,2,Apple Pay,3.3
+ORD-10045,CUST-337,2023-08-17 05:00:00,Sports & Outdoors,Asia Pacific,$220.24,5,12.8,5,Apple Pay,4.5
+ORD-10046,CUST-343,06/09/2023,Beauty & Care,Asia Pacific,296.35,3, 23.0% ,5,PayPal,3.5
+ORD-10047,CUST-325,"Mar 12, 2023",Electronics,Asia Pacific,N/A,3,26.8,1,PayPal,3.5
+ORD-10048,CUST-178,1681650000,Electronicss,North America,151.55,5,14.0,1,Apple Pay,3.8
+ORD-10049,CUST-399,2023/08/03,Electronics,Latin America,156.19,3,9.0,4,Apple Pay,N/A
+ORD-10050,CUST-379,2023-06-22 21:00:00,Sports & Outdoors,Europe,88.51 USD,4, 14.6% ,4,Apple Pay,4.4
+ORD-10051,CUST-307,31/10/2023,Home & Kitchen,Latin America,343.54,5,0.8,4,PayPal,4.3
+ORD-10052,CUST-142,"Aug 21, 2023",Beauty & Care,Europe,75.88,3,11.4,2,Apple Pay,3.7
+ORD-10053,CUST-294,1674817200,Apparel,Latin America,103.49,8,0.6,5,Bank Wire,3.4
+ORD-10054,CUST-135,2023/03/06,Electronics,North America,359.33,1, 18.6% ,2,PayPal,4.3
+ORD-10055,CUST-388,2023-02-28 05:00:00,Home & Kitchen,North-America,271.91,2,18.2,6,Bank Wire,4.9
+ORD-10056,CUST-155,12/04/2023,Sports & Outdoors,North America,207.89,4,,6,Bank Wire,4.2
+ORD-10057,CUST-224,"Dec 05, 2023",Electronics,Asia Pacific,986.04,1,10.4,4,Credit Card,3.1
+ORD-10058,CUST-274,1692914400,Electronics,Latin America,null,3, 19.1% ,7,Apple Pay,3.3
+ORD-10059,CUST-190,2023/05/06,Sports & Outdoors,Asia Pacific,170.73,5,8.1,7,Apple Pay,3.6
+ORD-10060,CUST-330,2023-09-07 06:00:00,Home & Kitchen,Latin America,$127.69,4,25.5,2,Apple Pay,3.7
+ORD-10061,CUST-232,28/07/2023,Apparel,Asia Pacific,75.58,4,2.6,6,Bank Wire,4.1
+ORD-10062,CUST-223,"Dec 21, 2023",Beauty & Care,Latin America,280.63,1, 8.8% ,4,Apple Pay,3.6
+ORD-10063,CUST-397,1684486800,Apparel,Latin America,62.55,6,10.6,4,Bank Wire,undefined
+ORD-10064,CUST-161,2023/09/05,Home & Kitchen,Asia Pacific,263.87,2,5.7,6,Credit Card,4.4
+ORD-10065,CUST-368,2023-06-04 00:00:00,Sports & Outdoors,Asia Pacific,77206.31,3,6.8,217,Credit Card,4.4
+ORD-10066,CUST-164,09/09/2023,Apparel,North America,75.34,3, 19.1% ,7,Credit Card,4.7
+ORD-10067,CUST-393,"Sep 02, 2023",Apparel,Latin America,64.05,3,29.0,3,Apple Pay,4.6
+ORD-10068,CUST-305,1683514800,Beauty & Care,North America,65.83,5,28.5,1,Credit Card,4.1
+ORD-10069,CUST-313,2023/08/08,Sports & Outdoors,Europe,??,4,8.9,5,Apple Pay,4.1
+ORD-10070,CUST-130,2023-05-03 05:00:00,ELECTR,North America,224.55,3, 19.8% ,2,PayPal,4.1
+ORD-10071,CUST-180,28/05/2023,Electronics,Latin America,873.84,4,8.7,2,Apple Pay,3.6
+ORD-10072,CUST-332,"Apr 26, 2023",Electronics,Europe,977.22,2,12.8,5,Bank Wire,3.3
+ORD-10073,CUST-236,1697706000,Home & Kitchen,north america,70.58,3,??,7,Credit Card,3.9
+ORD-10074,CUST-339,2023/01/21,Apparel,Latin America,70.05,8, 13.1% ,5,Bank Wire,4.5
+ORD-10075,CUST-228,2023-05-18 18:00:00,Electronics,North America,"$1,160.01",1,30.0,6,PayPal,3.1
+ORD-10076,CUST-189,09/09/2023,Beauty & Care,Latin America,75.8,5,13.1,7,Bank Wire,3.9
+ORD-10077,CUST-309,"May 28, 2023",Apparel,Asia Pacific,105.77,6,12.3,4,Credit Card,undefined
+ORD-10078,CUST-381,1690387200,Electronics,Latin America,480.24,3, 3.5% ,7,Credit Card,4.6
+ORD-10079,CUST-100,2023/09/13,Sports & Outdoors,Latin America,33.16,5,10.9,7,Apple Pay,3.9
+ORD-10080,CUST-126,2023-03-04 00:00:00,Home & Kitchen,Asia Pacific,??,4,26.4,4,PayPal,4.9
+ORD-10081,CUST-222,28/02/2023,Home & Kitchen,Asia Pacific,200.0,1,6.7,7,Credit Card,4.9
+ORD-10082,CUST-178,"Aug 22, 2023",Beauty & Care,Asia Pacific,154.19,4, 29.4% ,2,Bank Wire,3.3
+ORD-10083,CUST-197,1694937600,Sports & Outdoors,Europe,107.54,4,10.2,7,Credit Card,4.6
+ORD-10084,CUST-244,2023/10/06,Apparel,Latin America,64.65,8,10.4,5,PayPal,3.9
+ORD-10085,CUST-264,2023-08-31 22:00:00,Home & Kitchen,Europe,93.24,4,1.3,6,Apple Pay,4.8
+ORD-10086,CUST-295,19/06/2023,Beauty & Care,Europe,338.22,2, 15.1% ,5,Apple Pay,4.7
+ORD-10087,CUST-325,"Feb 08, 2023",Electronics,Latin America,908.57,4,26.1,2,Credit Card,4.6
+ORD-10088,CUST-235,1694106000,Apparel,Latin America,105.18,7,28.6,6,Credit Card,3.1
+ORD-10089,CUST-135,2023/11/21,Home & Kitchen,Asia Pacific,265.17,4,29.4,7,PayPal,4.7
+ORD-10090,CUST-327,2023-08-09 04:00:00,Home & Kitchen,Asia Pacific,$30.41,1,??,3,Credit Card,3.5
+ORD-10091,CUST-310,16/12/2023,Sports & Outdoors,North Amerca,None,5,26.1,5,PayPal,-999
+ORD-10092,CUST-398,"Aug 27, 2023",electrnics,Europe,228.7,4,7.7,1,Apple Pay,4.4
+ORD-10093,CUST-180,1703059200,Electronics,Latin America,1187.03,3,19.2,4,Bank Wire,3.9
+ORD-10094,CUST-254,2023/06/01,Home & Kitchen,Latin America,50.73,4, 17.2% ,5,Apple Pay,3.6
+ORD-10095,CUST-302,2023-04-28 19:00:00,Apparel,North America,111.06,8,25.0,3,Credit Card,4.6
+ORD-10096,CUST-212,18/01/2023,Home & Kitchen,Asia Pacific,225.46,1,9.3,4,PayPal,3.7
+ORD-10097,CUST-167,"Oct 04, 2023",Electronics,Asia Pacific,934.85,2,6.0,7,Bank Wire,4.1
+ORD-10098,CUST-239,1677592800,Home & Kitchen,Asia Pacific,339.07,3, 22.4% ,3,Apple Pay,4.9
+ORD-10099,CUST-172,2023/03/05,Home & Kitchen,Latin America,45.25,4,0.4,5,Bank Wire,3.7
+ORD-10100,CUST-234,2023-10-15 10:00:00,Sports & Outdoors,Latin America,€ 51.30,2,14.1,5,Bank Wire,4.8
+ORD-10101,CUST-213,05/06/2023,Electronics,Latin America,831.7,1,4.2,1,Bank Wire,3.2
+ORD-10102,CUST-220,"Mar 21, 2023",Sports & Outdoors,Europe,-999,5, 12.6% ,6,Apple Pay,4.3
+ORD-10103,CUST-350,1682938800,Sports & Outdoors,Latin America,25.96,3,6.5,4,Bank Wire,3.2
+ORD-10104,CUST-288,2023/08/21,Sports & Outdoors,Asia Pacific,148.38,2,29.0,7,Credit Card,4.3
+ORD-10105,CUST-110,2023-10-11 06:00:00,Electronics,Asia Pacific,"$1,188.26",2,2.1,7,PayPal,-999
+ORD-10106,CUST-219,09/05/2023,Apparel,Europe,47.73,3, 29.6% ,5,Credit Card,3.2
+ORD-10107,CUST-113,"Mar 31, 2023",Home & Kitchen,North America,279.64,2,,1,Bank Wire,3.1
+ORD-10108,CUST-315,1692547200,Sports & Outdoors,North America,174.54,3,15.4,1,Credit Card,3.4
+ORD-10109,CUST-122,2023/07/25,Sports & Outdoors,North-America,230.52,1,1.8,4,Apple Pay,4.4
+ORD-10110,CUST-351,2023-11-16 20:00:00,Beauty & Care,North America,122.91,2, 2.0% ,3,Credit Card,4.2
+ORD-10111,CUST-266,28/02/2023,Beauty & Care,Asia Pacific,184.36,4,3.0,6,Apple Pay,4.3
+ORD-10112,CUST-382,"Jul 24, 2023",Home & Kitchen,Latin America,312.51,4,10.2,4,Apple Pay,4.5
+ORD-10113,CUST-260,1675476000,Beauty & Care,Asia Pacific,-999,2,20.6,4,Bank Wire,4.7
+ORD-10114,CUST-147,2023/10/15,ELECTR,North America,286.94,5, 1.8% ,5,Bank Wire,4.3
+ORD-10115,CUST-310,2023-09-17 06:00:00,Apparel,Latin America,116.84,5,10.5,5,Credit Card,3.3
+ORD-10116,CUST-346,21/10/2023,Home & Kitchen,North America,298.2,3,3.4,3,Bank Wire,4.6
+ORD-10117,CUST-387,"Jun 23, 2023",Sports & Outdoors,North America,24.7,3,21.1,3,Bank Wire,3.0
+ORD-10118,CUST-173,1682078400,Sports & Outdoors,Latin America,62.53,1, 2.8% ,5,Credit Card,3.8
+ORD-10119,CUST-274,2023/03/21,Home & Kitchen,Asia Pacific,256.73,5,17.9,1,Bank Wire,undefined
+ORD-10120,CUST-125,2023-05-20 06:00:00,Electronics,Asia Pacific,$845.04,4,18.2,4,Apple Pay,4.5
+ORD-10121,CUST-158,24/01/2023,Apparel,Latin America,48.32,8,15.8,3,Credit Card,3.8
+ORD-10122,CUST-128,"Jun 17, 2023",Electronics,Europe,1142.59,2, 22.9% ,3,Bank Wire,3.0
+ORD-10123,CUST-320,1702119600,Home & Kitchen,Europe,193.42,2,15.0,7,Apple Pay,3.1
+ORD-10124,CUST-121,2023/07/27,Beauty & Care,North America,-999,3,,5,Apple Pay,4.3
+ORD-10125,CUST-248,2023-08-24 22:00:00,Electronics,Latin America,"1,164.51 USD",2,24.0,5,Credit Card,4.8
+ORD-10126,CUST-145,08/06/2023,Beauty & Care,North America,160.95,4, 15.7% ,4,PayPal,3.7
+ORD-10127,CUST-270,"Jun 29, 2023",Home & Kitchen,North Amerca,192.75,2,27.2,3,Credit Card,4.9
+ORD-10128,CUST-175,1701482400,Home & Kitchen,North America,100.75,2,18.1,7,PayPal,3.4
+ORD-10129,CUST-352,2023/08/29,Beauty & Care,Latin America,304.52,3,4.5,1,Bank Wire,4.3
+ORD-10130,CUST-240,2023-01-30 11:00:00,Sports & Outdoors,North America,184.96,3, 13.9% ,1,Bank Wire,4.7
+ORD-10131,CUST-139,20/10/2023,Electronics,Latin America,759.35,1,13.5,7,Apple Pay,3.4
+ORD-10132,CUST-343,"Sep 16, 2023",Sports & Outdoors,Europe,165.93,3,29.5,1,Credit Card,3.3
+ORD-10133,CUST-226,1687554000,Beauty & Care,Latin America,136.91,3,11.6,7,PayPal,undefined
+ORD-10134,CUST-271,2023/12/03,Electronics,Asia Pacific,735.86,4, 8.5% ,6,Credit Card,4.7
+ORD-10135,CUST-270,2023-02-13 09:00:00,Electronics,Europe,missing,4,3.9,6,Bank Wire,4.1
+ORD-10136,CUST-268,20/04/2023,electrnics,North America,185.34,1,10.9,2,Apple Pay,4.9
+ORD-10137,CUST-348,"Sep 17, 2023",Home & Kitchen,Europe,66.91,3,25.3,1,PayPal,4.7
+ORD-10138,CUST-369,1703185200,Electronics,Asia Pacific,777.11,2, 4.9% ,7,PayPal,4.6
+ORD-10139,CUST-184,2023/05/26,Beauty & Care,North America,137.04,2,29.1,5,Apple Pay,4.6
+ORD-10140,CUST-219,2023-07-08 21:00:00,Sports & Outdoors,Europe,€ 338.47,4,27.1,2,Bank Wire,4.9
+ORD-10141,CUST-325,13/04/2023,Beauty & Care,Asia Pacific,183.47,4,??,7,Apple Pay,3.3
+ORD-10142,CUST-228,"Mar 05, 2023",Electronics,Latin America,732.27,1, 21.3% ,5,Bank Wire,3.2
+ORD-10143,CUST-182,1692442800,Apparel,Latin America,103.1,2,28.4,2,PayPal,4.9
+ORD-10144,CUST-312,2023/06/13,Electronics,Latin America,397.57,1,11.2,1,Bank Wire,4.7
+ORD-10145,CUST-271,2023-08-29 14:00:00,Home & Kitchen,North-America,111.1,4,20.9,2,Credit Card,4.2
+ORD-10146,CUST-140,02/05/2023,Electronics,Asia Pacific,-999,4, 3.3% ,3,PayPal,3.2
+ORD-10147,CUST-222,"Nov 20, 2023",Beauty & Care,Latin America,52.14,4,17.9,1,Credit Card,-999
+ORD-10148,CUST-173,1701982800,Apparel,Latin America,28170.29,4,17.1,356,Credit Card,3.2
+ORD-10149,CUST-284,2023/05/10,Electronics,North America,1067.0,1,19.1,3,Apple Pay,3.0
+ORD-10150,CUST-134,2023-10-07 10:00:00,Apparel,Europe,$97.15,6, 4.0% ,3,Credit Card,4.6
+ORD-10151,CUST-189,19/01/2023,Beauty & Care,Latin America,286.85,1,21.5,4,PayPal,3.4
+ORD-10152,CUST-202,"Nov 28, 2023",Electronics,Asia Pacific,691.15,4,7.6,7,Bank Wire,3.6
+ORD-10153,CUST-124,1692014400,Apparel,Asia Pacific,99.93,7,26.7,6,Credit Card,3.7
+ORD-10154,CUST-195,2023/08/06,Beauty & Care,Latin America,324.64,5, 8.0% ,1,Bank Wire,3.9
+ORD-10155,CUST-192,2023-08-17 19:00:00,Sports & Outdoors,Asia Pacific,49.37,3,19.8,3,Bank Wire,4.4
+ORD-10156,CUST-185,21/05/2023,Beauty & Care,Asia Pacific,29.19,3,18.4,4,Apple Pay,5.0
+ORD-10157,CUST-129,"Nov 08, 2023",Electronics,Latin America,missing,2,28.6,2,Bank Wire,4.6
+ORD-10158,CUST-117,1673982000,ELECTR,North America,275.8,3,,5,PayPal,3.3
+ORD-10159,CUST-330,2023/06/10,Apparel,Asia Pacific,96.31,3,15.9,4,Apple Pay,3.6
+ORD-10160,CUST-158,2023-12-27 14:00:00,Electronics,Europe,€ 693.63,1,7.9,3,Apple Pay,3.4
+ORD-10161,CUST-246,16/08/2023,Beauty & Care,Europe,60.47,1,13.6,6,Credit Card,undefined
+ORD-10162,CUST-263,"Nov 23, 2023",Apparel,North America,109.13,3, 21.4% ,6,Bank Wire,4.6
+ORD-10163,CUST-360,1688490000,Home & Kitchen,North Amerca,280.34,2,23.7,1,PayPal,4.1
+ORD-10164,CUST-339,2023/09/03,Sports & Outdoors,Europe,37.03,4,30.0,6,Credit Card,3.8
+ORD-10165,CUST-309,2023-09-22 11:00:00,Sports & Outdoors,North America,$340.75,1,13.5,6,PayPal,3.3
+ORD-10166,CUST-382,20/03/2023,Sports & Outdoors,Europe,159.93,1, 24.9% ,5,PayPal,3.3
+ORD-10167,CUST-265,"May 21, 2023",Home & Kitchen,Asia Pacific,298.39,3,5.9,5,Bank Wire,4.3
+ORD-10168,CUST-373,1674345600,Electronics,Europe,null,3,25.3,5,PayPal,3.2
+ORD-10169,CUST-395,2023/10/07,Apparel,Europe,81.81,1,14.9,6,Apple Pay,4.3
+ORD-10170,CUST-254,2023-08-14 13:00:00,Beauty & Care,Europe,114.64,1, 20.7% ,2,Apple Pay,4.0
+ORD-10171,CUST-204,26/06/2023,Apparel,Europe,106.15,6,22.0,7,Bank Wire,3.3
+ORD-10172,CUST-289,"Mar 14, 2023",Sports & Outdoors,North America,95.98,1,8.0,2,Bank Wire,3.1
+ORD-10173,CUST-296,1686376800,Sports & Outdoors,Latin America,337.5,2,24.4,5,PayPal,4.5
+ORD-10174,CUST-355,2023/09/16,Sports & Outdoors,Latin America,309.49,4, 0.7% ,4,Apple Pay,4.9
+ORD-10175,CUST-210,2023-12-01 21:00:00,Sports & Outdoors,Asia Pacific,31.93 USD,4,,7,Credit Card,N/A
+ORD-10176,CUST-374,26/07/2023,Electronics,North America,290.63,3,21.8,7,Apple Pay,3.1
+ORD-10177,CUST-126,"Oct 09, 2023",Sports & Outdoors,Europe,200.33,1,11.6,4,Bank Wire,4.7
+ORD-10178,CUST-160,1678860000,Home & Kitchen,North America,140.02,3, 16.7% ,3,Apple Pay,4.2
+ORD-10179,CUST-305,2023/08/22,Sports & Outdoors,North America,None,3,24.1,5,Credit Card,4.2
+ORD-10180,CUST-363,2023-10-31 10:00:00,Electronicss,Asia Pacific,$69.44,5,22.2,3,Bank Wire,4.0
+ORD-10181,CUST-360,26/02/2023,Sports & Outdoors,north america,174.09,1,11.1,6,Bank Wire,4.2
+ORD-10182,CUST-113,"Jan 27, 2023",Sports & Outdoors,Latin America,338.97,5, 17.3% ,6,Bank Wire,4.0
+ORD-10183,CUST-368,1677391200,Sports & Outdoors,Latin America,290.26,2,0.9,6,PayPal,3.0
+ORD-10184,CUST-260,2023/08/30,Beauty & Care,Europe,246.32,4,15.1,5,Apple Pay,4.5
+ORD-10185,CUST-170,2023-03-30 14:00:00,Sports & Outdoors,Europe,349.37,4,15.8,3,Bank Wire,4.8
+ORD-10186,CUST-275,13/10/2023,Sports & Outdoors,Asia Pacific,219.38,2, 28.7% ,3,Bank Wire,3.4
+ORD-10187,CUST-252,"May 21, 2023",Apparel,Europe,51.7,6,16.8,7,Apple Pay,3.2
+ORD-10188,CUST-378,1676026800,Beauty & Care,Latin America,334.79,2,8.7,3,Bank Wire,4.8
+ORD-10189,CUST-231,2023/05/20,Beauty & Care,Europe,292.36,3,28.0,6,PayPal,undefined
+ORD-10190,CUST-400,2023-01-27 03:00:00,Home & Kitchen,Europe,??,5, 6.8% ,2,Credit Card,3.8
+ORD-10191,CUST-341,02/09/2023,Electronics,Europe,1162.74,2,12.2,4,Credit Card,3.4
+ORD-10192,CUST-247,"Oct 01, 2023",Apparel,Asia Pacific,110.79,2,??,2,Credit Card,4.4
+ORD-10193,CUST-119,1694408400,Home & Kitchen,Latin America,327.86,1,29.9,4,PayPal,4.9
+ORD-10194,CUST-248,2023/05/26,Electronics,North America,746.36,1, 27.9% ,3,Bank Wire,5.0
+ORD-10195,CUST-378,2023-02-27 10:00:00,Sports & Outdoors,Latin America,$300.11,4,8.2,7,PayPal,3.3
+ORD-10196,CUST-334,09/04/2023,Apparel,Europe,93.66,5,17.0,7,Credit Card,4.2
+ORD-10197,CUST-307,"Sep 02, 2023",Beauty & Care,Asia Pacific,149.28,1,5.5,2,Credit Card,4.9
+ORD-10198,CUST-103,1698361200,Apparel,Latin America,64.67,5, 28.6% ,3,PayPal,4.1
+ORD-10199,CUST-233,2023/12/18,Apparel,North Amerca,86.78,8,9.2,4,Credit Card,4.8
+ORD-10010,CUST-181,2023-01-06 21:00:00,Beauty & Care,North America,142.84,4, 15.9% ,5,Apple Pay,4.4
+ORD-10011,CUST-374,15/05/2023,Apparel,Asia Pacific,49.35,3,13.6,6,Credit Card,4.5
+ORD-10012,CUST-359,"Sep 29, 2023",Electronics,Asia Pacific,52716.41,2,16.2,181,PayPal,4.2
+ORD-10013,CUST-350,1697594400,Electronics,North America,1072.66,3,7.2,2,Bank Wire,3.2
+ORD-10014,CUST-348,2023/11/07,Electronics,Europe,,2, 8.0% ,7,PayPal,4.9

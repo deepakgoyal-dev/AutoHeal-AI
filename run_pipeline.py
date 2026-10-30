@@ -1,17 +1,18 @@
 """
-AegisData AI - Command Line Runner
+AutoHeal AI - Command Line Interface
+# AutoHeal Team: Deepak, Rudra, Nikhil, Riddhi Garg
 Execute autonomous self-healing, visual dashboard creation, and plain-English insights from the terminal.
 """
 
 import sys
 import argparse
 from pathlib import Path
-from aegis import AegisPipeline, CorruptedDataGenerator, PipelineConfig
+from aegis import AutoHealPipeline, CorruptedDataGenerator, PipelineConfig
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description="AegisData AI - Autonomous Self-Healing Pipeline & Instant Analytics Engine"
+        description="AutoHeal AI - Statistical & AI-Assisted Data Pipeline"
     )
     parser.add_argument(
         "--input", "-i",
@@ -40,10 +41,10 @@ def main():
 
     args = parser.parse_args()
     config = PipelineConfig()
-    pipeline = AegisPipeline(config)
+    pipeline = AutoHealPipeline(config)
 
     print("=================================================================")
-    print("  AEGISDATA AI: AUTONOMOUS SELF-HEALING DATA PIPELINE")
+    print("  AUTOHEAL AI: INTELLIGENT SELF-HEALING DATA PIPELINE")
     print("  Zero Human Intervention &bull; Instant Visual Analytics &bull; Plain English")
     print("=================================================================\n")
 

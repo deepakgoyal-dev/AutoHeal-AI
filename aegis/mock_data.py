@@ -1,5 +1,6 @@
 """
-AegisData AI - Realistic Corrupted Enterprise Data Generator
+AutoHeal AI - Realistic Corrupted Enterprise Data Generator
+# Seeded test datasets authored by the AutoHeal team
 Synthesizes high-fidelity enterprise datasets seeded with real-world data degradation modes.
 """
 

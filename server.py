@@ -1,5 +1,6 @@
 """
-AegisData AI - Standalone Web Server & Interactive Portal
+AutoHeal AI - Local Web Server & API Portal
+# Authored by: Deepak & Nikhil
 Provides a zero-dependency web interface with live upload, simulation, visual dashboards, and API endpoints.
 """
 
@@ -13,14 +14,14 @@ from urllib.parse import urlparse, parse_qs
 from pathlib import Path
 import pandas as pd
 
-from aegis import AegisPipeline, CorruptedDataGenerator, PipelineConfig
+from aegis import AutoHealPipeline, CorruptedDataGenerator, PipelineConfig
 
 BASE_DIR = Path(__file__).resolve().parent
 CONFIG = PipelineConfig()
-PIPELINE = AegisPipeline(CONFIG)
+PIPELINE = AutoHealPipeline(CONFIG)
 
 
-class AegisWebHandler(BaseHTTPRequestHandler):
+class AutoHealWebHandler(BaseHTTPRequestHandler):
     """
     HTTP request handler serving the interactive AegisData AI dashboard and REST API.
     """
@@ -242,21 +243,21 @@ class AegisWebHandler(BaseHTTPRequestHandler):
 
 def run_server(port: int = 8000):
     server_address = ("", port)
-    httpd = HTTPServer(server_address, AegisWebHandler)
+    httpd = HTTPServer(server_address, AutoHealWebHandler)
     print(f"============================================================")
-    print(f" AegisData AI Portal running at http://localhost:{port}")
+    print(f" AutoHeal AI Portal running at http://localhost:{port}")
     print(f" Features: Autonomous Self-Healing, Live Diff, Visual Dashboards")
     print(f"============================================================")
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print("\nShutting down AegisData server.")
+        print("\nShutting down AutoHeal AI server.")
         httpd.server_close()
 
 
 if __name__ == "__main__":
     import argparse
-    parser = argparse.ArgumentParser(description="AegisData AI Web Server")
+    parser = argparse.ArgumentParser(description="AutoHeal AI Web Server")
     parser.add_argument("--port", type=int, default=8000, help="Port to bind (default: 8000)")
     args = parser.parse_args()
     run_server(args.port)

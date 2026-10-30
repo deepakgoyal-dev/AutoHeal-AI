@@ -1,5 +1,6 @@
 """
-AegisData AI - Healing Ledger & Health Score Calculator
+AutoHeal AI - Audit Ledger & Data Health Scorer
+# Authored by: Deepak & Riddhi Garg
 Maintains a tamper-evident audit log of all self-healing actions and computes health indices.
 """
 

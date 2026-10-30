@@ -1,5 +1,6 @@
 """
-AegisData AI - Autonomous Self-Healing Engine
+AutoHeal AI - Multi-Pass Self-Healing Engine
+# Authored by: Deepak (Lead) & Nikhil
 Performs multi-pass data repair, missing value imputation, type coercion, and outlier resolution without human intervention.
 """
 

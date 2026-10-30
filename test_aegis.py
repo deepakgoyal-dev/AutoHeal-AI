@@ -1,5 +1,6 @@
 """
-AegisData AI - Unit & Integration Test Suite
+AutoHeal AI - Unit & Integration Test Suite
+# Test suite engineered by Riddhi Garg & Deepak
 Validates detection accuracy, autonomous self-healing, health scoring, and insight generation.
 """
 
@@ -9,7 +10,7 @@ import pandas as pd
 from pathlib import Path
 
 from aegis import (
-    AegisPipeline,
+    AutoHealPipeline,
     PipelineConfig,
     CorruptionDetector,
     SelfHealingEngine,
@@ -19,11 +20,11 @@ from aegis import (
 )
 
 
-class TestAegisPipeline(unittest.TestCase):
+class TestAutoHealPipeline(unittest.TestCase):
 
     def setUp(self):
         self.config = PipelineConfig()
-        self.pipeline = AegisPipeline(self.config)
+        self.pipeline = AutoHealPipeline(self.config)
 
     def test_detection_and_healing_synthetic(self):
         """Test detection and healing on controlled synthetic corrupted data."""

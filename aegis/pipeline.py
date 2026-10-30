@@ -1,5 +1,6 @@
 """
-AegisData AI - Autonomous Pipeline Orchestrator
+AutoHeal AI - Pipeline Orchestrator
+# Core Orchestrator: Deepak (Lead)
 Coordinates multi-vector detection, self-healing, visual analytics, and plain-English narrative insight generation.
 """
 
@@ -16,7 +17,7 @@ from .insights import PlainEnglishInsightEngine
 from .visualizer import VisualAnalyticsGenerator
 
 
-class AegisPipeline:
+class AutoHealPipeline:
     """
     Main entry point for autonomous data ingestion, healing, visual analytics, and plain-English reporting.
     """
@@ -59,7 +60,7 @@ class AegisPipeline:
         else:
             raise ValueError("data_source must be a file path or pandas DataFrame")
 
-        print(f"[AegisPipeline] Ingested '{dataset_name}' with {len(raw_df)} rows and {len(raw_df.columns)} columns.")
+        print(f"[AutoHealPipeline] Ingested '{dataset_name}' with {len(raw_df)} rows and {len(raw_df.columns)} columns.")
 
         # Step 2: Diagnostic Anomaly Detection
         initial_telemetry = self.detector.detect_all(raw_df)
@@ -70,8 +71,8 @@ class AegisPipeline:
         healed_df, populated_ledger = healer.heal(raw_df)
 
         ledger_summary = populated_ledger.get_summary()
-        print(f"[AegisPipeline] Healing completed: {ledger_summary['total_healing_actions']} actions executed.")
-        print(f"[AegisPipeline] Health Score: {ledger_summary['initial_health_score']}/100 -> {ledger_summary['final_health_score']}/100 (+{ledger_summary['score_improvement']} pts)")
+        print(f"[AutoHealPipeline] Healing completed: {ledger_summary['total_healing_actions']} actions executed.")
+        print(f"[AutoHealPipeline] Health Score: {ledger_summary['initial_health_score']}/100 -> {ledger_summary['final_health_score']}/100 (+{ledger_summary['score_improvement']} pts)")
 
         # Step 4: Autonomous Plain-English Insight Generation
         insight_engine = PlainEnglishInsightEngine(dataset_name=dataset_name)
@@ -107,7 +108,7 @@ class AegisPipeline:
             json.dump(ledger_summary, f, indent=2)
 
         duration = round(time.time() - start_time, 2)
-        print(f"[AegisPipeline] All artifacts generated in {duration}s:")
+        print(f"[AutoHealPipeline] All artifacts generated in {duration}s:")
         print(f"  - Healed Dataset: {healed_csv_path}")
         print(f"  - Visual Analytics Dashboard: {dashboard_path}")
         print(f"  - Plain-English Briefing: {insights_md_path}")
@@ -143,7 +144,7 @@ class AegisPipeline:
         """
         incoming = self.config.incoming_dir
         incoming.mkdir(parents=True, exist_ok=True)
-        print(f"[AegisWatcher] Watching directory for incoming files: {incoming}")
+        print(f"[AutoHealWatcher] Watching directory for incoming files: {incoming}")
 
         processed_files = set()
         iterations = 0
@@ -155,12 +156,12 @@ class AegisPipeline:
             for file_path in incoming.iterdir():
                 if file_path.is_file() and file_path.suffix.lower() in [".csv", ".json", ".parquet"]:
                     if file_path.name not in processed_files:
-                        print(f"[AegisWatcher] New dataset detected: {file_path.name}")
+                        print(f"[AutoHealWatcher] New dataset detected: {file_path.name}")
                         try:
                             self.process(file_path)
                             processed_files.add(file_path.name)
                         except Exception as e:
-                            print(f"[AegisWatcher] Error processing {file_path.name}: {e}")
+                            print(f"[AutoHealWatcher] Error processing {file_path.name}: {e}")
 
             time.sleep(check_interval_sec)
             iterations += 1
