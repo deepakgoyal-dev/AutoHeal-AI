@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AegisData AI - Autonomous Self-Healing Analytics</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    :root {
+      --bg: #090d16;
+      --card: #111827;
+      --card-hover: #1f2937;
+      --border: #374151;
+      --text: #f3f4f6;
+      --muted: #9ca3af;
+      --primary: #3b82f6;
+      --accent-green: #10b981;
+      --accent-amber: #f59e0b;
+      --accent-rose: #ef4444;
+      --accent-purple: #8b5cf6;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.15rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    .tab-active {
+      border-bottom: 2px solid #3b82f6;
+      color: #60a5fa;
+      font-weight: 600;
+    }
+    .diff-healed {
+      background-color: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-weight: 500;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #111827;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #374151;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 sm:p-6 lg:p-8">
+
+  <!-- Header Banner -->
+  <header class="max-w-7xl mx-auto mb-8 bg-[#111827] border border-[#374151] rounded-2xl p-6 shadow-xl relative overflow-hidden">
+    <div class="absolute -right-16 -top-16 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+      <div>
+        <div class="flex items-center gap-3">
+          <div class="p-2.5 bg-blue-600/20 border border-blue-500/40 rounded-xl text-blue-400">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-2xl font-bold tracking-tight text-white">AegisData AI</h1>
+              <span class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">Autonomous Mode: Active</span>
+            </div>
+            <p class="text-sm text-gray-400 mt-0.5">Self-Healing Data Pipeline & Plain-English Intelligence Engine</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <div class="bg-gray-800/80 border border-gray-700/80 px-4 py-2 rounded-xl text-right">
+          <span class="text-xs uppercase tracking-wider text-gray-400 block font-medium">Dataset</span>
+          <span id="banner-dataset-name" class="font-semibold text-white text-sm">Enterprise Dataset</span>
+        </div>
+        <button onclick="window.print()" class="px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-600 rounded-xl text-sm font-medium transition flex items-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          Export PDF
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto space-y-8">
+
+    <!-- KPI / Health Score Row -->
+    <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- Card 1: Data Health Delta -->
+      <div class="bg-[#111827] border border-[#374151] rounded-2xl p-5 shadow-sm">
+        <div class="flex justify-between items-start">
+          <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Data Health Score</span>
+          <span id="kpi-final-grade" class="badge bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">A+</span>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span id="kpi-final-score" class="text-3xl font-bold text-white">98.5</span>
+          <span class="text-sm text-gray-400">/ 100</span>
+          <span id="kpi-score-gain" class="text-xs font-semibold text-emerald-400 ml-auto">+42.1 pts</span>
+        </div>
+        <div class="mt-3 text-xs text-gray-400 flex items-center gap-1">
+          <span>Initial:</span>
+          <span id="kpi-initial-score" class="font-medium text-gray-300">56.4</span>
+          <span class="text-gray-500">→</span>
+          <span class="text-emerald-400 font-medium">Healed & Verified</span>
+        </div>
+      </div>
+
+      <!-- Card 2: Self-Healing Operations -->
+      <div class="bg-[#111827] border border-[#374151] rounded-2xl p-5 shadow-sm">
+        <div class="flex justify-between items-start">
+          <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Autonomous Repairs</span>
+          <span class="p-1 bg-blue-500/10 rounded-lg text-blue-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </span>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span id="kpi-total-repairs" class="text-3xl font-bold text-blue-400">142</span>
+          <span class="text-sm text-gray-400">actions</span>
+        </div>
+        <div class="mt-3 text-xs text-gray-400">
+          Zero human manual edits required
+        </div>
+      </div>
+
+      <!-- Card 3: Missing Values Imputed -->
+      <div class="bg-[#111827] border border-[#374151] rounded-2xl p-5 shadow-sm">
+        <div class="flex justify-between items-start">
+          <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Missing Values Imputed</span>
+          <span class="p-1 bg-amber-500/10 rounded-lg text-amber-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+          </span>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span id="kpi-missing-imputed" class="text-3xl font-bold text-amber-400">68</span>
+          <span class="text-sm text-gray-400">cells</span>
+        </div>
+        <div class="mt-3 text-xs text-gray-400">
+          Contextual group median & mode
+        </div>
+      </div>
+
+      <!-- Card 4: Type & Format Fixes -->
+      <div class="bg-[#111827] border border-[#374151] rounded-2xl p-5 shadow-sm">
+        <div class="flex justify-between items-start">
+          <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Type & Outlier Fixes</span>
+          <span class="p-1 bg-purple-500/10 rounded-lg text-purple-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </span>
+        </div>
+        <div class="mt-3 flex items-baseline gap-2">
+          <span id="kpi-type-outliers" class="text-3xl font-bold text-purple-400">74</span>
+          <span class="text-sm text-gray-400">coercions</span>
+        </div>
+        <div class="mt-3 text-xs text-gray-400">
+          Currency, dates & IQR winsorized
+        </div>
+      </div>
+    </section>
+
+    <!-- Navigation Tabs -->
+    <div class="border-b border-gray-800 flex gap-6 text-sm">
+      <button onclick="switchTab('insights')" id="tab-btn-insights" class="tab-active pb-3 transition flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+        Plain-English Intelligence Briefing
+      </button>
+      <button onclick="switchTab('visuals')" id="tab-btn-visuals" class="text-gray-400 hover:text-gray-200 pb-3 transition flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Instant Visual Analytics
+      </button>
+      <button onclick="switchTab('diff')" id="tab-btn-diff" class="text-gray-400 hover:text-gray-200 pb-3 transition flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"/></svg>
+        Before vs After Inspector
+      </button>
+      <button onclick="switchTab('ledger')" id="tab-btn-ledger" class="text-gray-400 hover:text-gray-200 pb-3 transition flex items-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+        Healing Audit Ledger
+      </button>
+    </div>
+
+    <!-- TAB 1: PLAIN-ENGLISH INSIGHTS -->
+    <section id="tab-content-insights" class="space-y-6">
+
+      <!-- Executive Narrative Card -->
+      <div class="bg-[#111827] border border-[#374151] rounded-2xl p-6 shadow-sm">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="badge bg-blue-500/20 text-blue-400 border border-blue-500/30">Executive Summary</span>
+          <span class="text-xs text-gray-500">Autonomous Synthesis</span>
+        </div>
+        <p id="narrative-executive-summary" class="text-base text-gray-200 leading-relaxed">
+          Loading intelligence summary...
+        </p>
+      </div>
+
+      <!-- Two-column grid: Correlations & Anomalies -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Discovered Correlations -->
+        <div class="bg-[#111827] border border-[#374151] rounded-2xl p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-base font-semibold text-white flex items-center gap-2">
+              <svg class="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+              Discovered Drivers & Correlations
+            </h3>
+            <span class="text-xs text-gray-400">Statistical Significance</span>
+          </div>
+          <div id="correlations-container" class="space-y-3">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- Detected Anomalies & Risk Alerts -->
+        <div class="bg-[#111827] border border-[#374151] rounded-2xl p-6 shadow-sm">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-base font-semibold text-white flex items-center gap-2">
+              <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+              Detected Anomaly Alerts
+            </h3>
+            <span class="text-xs text-gray-400">Quality Diagnostic</span>
+          </div>
+          <div id="alerts-container" class="space-y-3">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Prescriptive Directives -->
+      <div class="bg-[#111827] border border-[#374151] rounded-2xl p-6 shadow-sm">
+        <h3 class="text-base font-semibold text-white mb-4 flex items-center gap-2">
+          <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          Strategic Prescriptive Directives
+        </h3>
+        <div id="recommendations-container" class="space-y-3">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB 2: INSTANT VISUAL ANALYTICS -->
+    <section id="tab-content-visuals" class="hidden space-y-6">
+
+      <!-- Distribution Comparison Chart -->
+      <div class="bg-[#111827] border border-[#374151] rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-base font-semibold text-white">Distribution Stabilization (Before vs After Healing)</h3>
+            <p class="text-xs text-gray-400">Visualizing outlier winsorization and missing value imputation across key feature</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <label for="feature-select" class="text-xs text-gray-400">Feature:</label>
+            <select id="feature-select" onchange="renderDistributionChart()" class="bg-gray-800 border border-gray-700 text-xs rounded-lg px-2.5 py-1.5 text-gray-200">
+              <!-- Injected via JS -->
+            </select>
+          </div>
+        </div>
+
+        <div class="relative w-full h-64 bg-gray-900/60 rounded-xl border border-gray-800 p-4">
+          <canvas id="distribution-canvas" class="w-full h-full"></canvas>
+        </div>
+        <div class="flex items-center justify-center gap-6 mt-3 text-xs">
+          <span class="flex items-center gap-1.5 text-rose-400">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span> Raw Degraded Data
+          </span>
+          <span class="flex items-center gap-1.5 text-emerald-400">
+            <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span> Healed & Stabilized Distribution
+          </span>
+        </div>
+      </div>
+
+      <!-- Grid: Remediation Breakdown & Correlation Matrix -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+        <!-- Issue Types Breakdown -->
+        <div class="bg-[#111827] border border-[#374151] rounded-2xl p-6 shadow-sm">
+          <h3 class="text-base font-semibold text-white mb-2">Remediation Vector Breakdown</h3>
+          <p class="text-xs text-gray-400 mb-4">Volume of autonomous transformations partitioned by anomaly mode</p>
+          <div class="relative w-full h-56 bg-gray-900/60 rounded-xl border border-gray-800 p-4">
+            <canvas id="breakdown-canvas" class="w-full h-full"></canvas>
+          </div>
+        </div>
+
+        <!-- Correlation Heatmap Visual -->
+        <div class="bg-[#111827] border border-[#374151] rounded-2xl p-6 shadow-sm">
+          <h3 class="text-base font-semibold text-white mb-2">Feature Correlation Heatmap</h3>
+          <p class="text-xs text-gray-400 mb-4">Bivariate relationship matrix calculated on sanitized metrics</p>
+          <div id="heatmap-container" class="overflow-x-auto">
+            <!-- Heatmap table generated dynamically -->
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- TAB 3: BEFORE VS AFTER INSPECTOR -->
+    <section id="tab-content-diff" class="hidden space-y-6">
+      <div class="bg-[#111827] border border-[#374151] rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-base font-semibold text-white">Live Record Diff Inspector</h3>
+            <p class="text-xs text-gray-400">Examine how corrupted cells were identified, coerced, or imputed</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="toggleDiffMode('healed')" id="diff-btn-healed" class="px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-medium">Healed Clean View</button>
+            <button onclick="toggleDiffMode('raw')" id="diff-btn-raw" class="px-3 py-1.5 bg-gray-800 text-gray-400 rounded-lg text-xs font-medium">Raw Dirty View</button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto border border-gray-800 rounded-xl max-h-96">
+          <table class="w-full text-xs text-left text-gray-300">
+            <thead class="text-xs uppercase bg-gray-800/90 text-gray-400 sticky top-0" id="diff-table-head">
+              <!-- Injected via JS -->
+            </thead>
+            <tbody id="diff-table-body" class="divide-y divide-gray-800">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: HEALING AUDIT LEDGER -->
+    <section id="tab-content-ledger" class="hidden space-y-6">
+      <div class="bg-[#111827] border border-[#374151] rounded-2xl p-6 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <div>
+            <h3 class="text-base font-semibold text-white">Autonomous Healing Ledger</h3>
+            <p class="text-xs text-gray-400">Tamper-evident record of atomic cell repairs and confidence scores</p>
+          </div>
+          <input type="text" id="ledger-search" oninput="filterLedger()" placeholder="Search column or strategy..." class="bg-gray-800 border border-gray-700 text-xs rounded-lg px-3 py-1.5 text-gray-200 w-64">
+        </div>
+
+        <div class="overflow-x-auto border border-gray-800 rounded-xl max-h-96">
+          <table class="w-full text-xs text-left text-gray-300">
+            <thead class="text-xs uppercase bg-gray-800/90 text-gray-400 sticky top-0">
+              <tr>
+                <th class="px-4 py-3">Time</th>
+                <th class="px-4 py-3">Row</th>
+                <th class="px-4 py-3">Column</th>
+                <th class="px-4 py-3">Issue Mode</th>
+                <th class="px-4 py-3">Original</th>
+                <th class="px-4 py-3">Healed</th>
+                <th class="px-4 py-3">Strategy</th>
+                <th class="px-4 py-3">Confidence</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-table-body" class="divide-y divide-gray-800">
+              <!-- Injected via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-7xl mx-auto mt-12 text-center text-xs text-gray-500 pb-8">
+    AegisData AI Autonomous Pipeline &bull; Zero Human Intervention Engine &bull; Antigravity Runtime
+  </footer>
+
+  <!-- Embedded Telemetry Data -->
+  <script>
+    const PIPELINE_DATA = {"dataset_name": "Clinical_Patient_Vitals", "initial_score": 99.8, "final_score": 99.9, "initial_grade": "A+", "final_grade": "A+", "score_gain": 0.1, "rows_count": 400, "cols_count": 7, "total_repairs": 419, "issue_counts": {"MISSING_VALUE": 4, "CORRUPT_TYPE": 400, "TYPO_CORRECTED": 2, "OUTLIER_BOUNDED": 13}, "distribution_data": {"age_years": {"original": [42, 46, 60, 64, 69, 60, 66, 77, 380, 22, 37, 78, 57, 22, 74, 35, 75, 25, 77, 37, 85, 19, 23, 58, 62, 84, 36, 64, 34, 48, 23, 24, 22, 75, 36, 52, 75, 31, 30, 42, 84, 85, 34, 75, 29, 85, 48, 60, 48, 80, 42, 66, 65, 56, 79, 66, 31, 52, 54, 47, 24, 76, 64, 30, 25, 27, 83, 31, 38, 49, 42, 79, 41, 27, 18, 70, 36, 46, 84, 19, 41, 28, 68, 25, 40, 18, 82, 37, 81, 59, 22, 59, 77, 43, 31, 71, 61, 73, 43, 57, 62, 69, 69, 31, 27, 84, 42, 38, 38, 53, 41, 39, 23, 72, 60, 76, 50, 75, 25, 57, 33, 75, 64, 41, 22, 68, 25, 32, 61, 41, 50, 22, 55, 49, 61, 85, 40, 22, 45, 77, 68, 31, 18, 51, 46, 53, 61, 49, 30, 80, 33, 71, 57, 59, 76, 77, 66, 68, 85, 46, 25, 81, 74, 81, 70, 44, 57, 47, 81, 56, 53, 79, 27, 75, 53, 81, 46, 42, 24, 30, 34, 32, 63, 75, 75, 64, 75, 23, 35, 28, 49, 61, 22, 19, 49, 47, 19, 75, 32, 29], "healed": [42.0, 46.0, 60.0, 64.0, 69.0, 60.0, 66.0, 77.0, 124.12, 22.0, 37.0, 78.0, 57.0, 22.0, 74.0, 35.0, 75.0, 25.0, 77.0, 37.0, 85.0, 19.0, 23.0, 58.0, 62.0, 84.0, 36.0, 64.0, 34.0, 48.0, 23.0, 24.0, 22.0, 75.0, 36.0, 52.0, 75.0, 31.0, 30.0, 42.0, 84.0, 85.0, 34.0, 75.0, 29.0, 85.0, 48.0, 60.0, 48.0, 80.0, 42.0, 66.0, 65.0, 56.0, 79.0, 66.0, 31.0, 52.0, 54.0, 47.0, 24.0, 76.0, 64.0, 30.0, 25.0, 27.0, 83.0, 31.0, 38.0, 49.0, 42.0, 79.0, 41.0, 27.0, 18.0, 70.0, 36.0, 46.0, 84.0, 19.0, 41.0, 28.0, 68.0, 25.0, 40.0, 18.0, 82.0, 37.0, 81.0, 59.0, 22.0, 59.0, 77.0, 43.0, 31.0, 71.0, 61.0, 73.0, 43.0, 57.0, 62.0, 69.0, 69.0, 31.0, 27.0, 84.0, 42.0, 38.0, 38.0, 53.0, 41.0, 39.0, 23.0, 72.0, 60.0, 76.0, 50.0, 75.0, 25.0, 57.0, 33.0, 75.0, 64.0, 41.0, 22.0, 68.0, 25.0, 32.0, 61.0, 41.0, 50.0, 22.0, 55.0, 49.0, 61.0, 85.0, 40.0, 22.0, 45.0, 77.0, 68.0, 31.0, 18.0, 51.0, 46.0, 53.0, 61.0, 49.0, 30.0, 80.0, 33.0, 71.0, 57.0, 59.0, 76.0, 77.0, 66.0, 68.0, 85.0, 46.0, 25.0, 81.0, 74.0, 81.0, 70.0, 44.0, 57.0, 47.0, 81.0, 56.0, 53.0, 79.0, 27.0, 75.0, 53.0, 81.0, 46.0, 42.0, 24.0, 30.0, 34.0, 32.0, 63.0, 75.0, 75.0, 64.0, 75.0, 23.0, 35.0, 28.0, 49.0, 61.0, 22.0, 19.0, 49.0, 47.0, 19.0, 75.0, 32.0, 29.0]}, "systolic_bp_mmhg": {"original": [136.0, 113.7, 130.3, 134.7, 125.8, 128.4, 109.4, 120.6, 121.5, 118.8, 113.0, 137.5, 114.3, 122.2, 113.4, 112.4, 129.0, 134.6, 129.5, 132.0, 122.4, 120.8, 122.8, 107.0, 112.6, 104.3, 124.2, 114.8, 110.2, 101.6, 163.9, 107.0, 141.2, 120.1, 121.5, 130.1, 116.6, 129.2, 119.9, 149.5, 127.9, 117.5, 999.0, 148.6, 115.8, 126.2, 119.7, 119.1, 122.6, 112.5, 123.7, 121.4, 93.0, 118.2, 130.3, 130.1, 130.3, 100.3, 127.4, 111.9, 139.2, 105.8, 122.4, 123.8, 97.4, 114.7, 120.5, 119.5, 137.7, 118.6, 130.6, 124.8, 106.0, 126.8, 132.7, 114.1, 105.2, 111.0, 130.1, 110.9, 125.9, 118.6, 115.6, 121.8, 126.3, 111.4, 127.7, 107.2, 123.1, 150.7, 111.5, 109.3, 118.5, 148.4, 135.3, 123.6, 134.7, 118.7, 123.7, 131.6, 120.9, 122.3, 96.0, 116.7, 122.9, 122.5, 99.5, 117.4, 122.2, 107.3, 144.2, 123.2, 124.6, 129.1, 137.5, 120.8, 107.8, 126.6, 141.5, 121.0, 108.8, 109.4, 122.6, 129.7, 120.7, 137.2, 134.3, 122.4, 102.2, 140.1, 141.3, 146.9, 136.0, 130.5, 130.4, 136.2, 146.5, 145.9, 115.3, 118.4, 112.1, 120.2, 126.3, 121.9, 128.7, 126.9, 130.3, 116.7, 119.5, 117.4, 136.6, 109.9, 131.8, 123.7, 130.8, 128.5, 136.4, 135.7, 141.2, 123.2, 121.5, 133.2, 125.3, 111.3, 102.5, 134.9, 113.1, 111.5, 111.2, 113.5, 119.8, 141.0, 149.1, 101.0, 121.4, 121.2, 117.6, 134.7, 138.5, 146.3, 113.0, 130.8, 109.7, 118.1, 121.9, 141.2, 118.9, 103.7, 132.2, 119.8, 117.0, 141.1, 117.1, 135.6, 112.7, 122.0, 121.3, 138.6, 117.4, 145.8], "healed": [136.0, 113.7, 130.3, 134.7, 125.8, 128.4, 109.4, 120.6, 121.5, 118.8, 113.0, 137.5, 114.3, 122.2, 113.4, 112.4, 129.0, 134.6, 129.5, 132.0, 122.4, 120.8, 122.8, 107.0, 112.6, 104.3, 124.2, 114.8, 110.2, 101.6, 154.39, 107.0, 141.2, 120.1, 121.5, 130.1, 116.6, 129.2, 119.9, 149.5, 127.9, 117.5, 154.39, 148.6, 115.8, 126.2, 119.7, 119.1, 122.6, 112.5, 123.7, 121.4, 93.0, 118.2, 130.3, 130.1, 130.3, 100.3, 127.4, 111.9, 139.2, 105.8, 122.4, 123.8, 97.4, 114.7, 120.5, 119.5, 137.7, 118.6, 130.6, 124.8, 106.0, 126.8, 132.7, 114.1, 105.2, 111.0, 130.1, 110.9, 125.9, 118.6, 115.6, 121.8, 126.3, 111.4, 127.7, 107.2, 123.1, 150.7, 111.5, 109.3, 118.5, 148.4, 135.3, 123.6, 134.7, 118.7, 123.7, 131.6, 120.9, 122.3, 96.0, 116.7, 122.9, 122.5, 99.5, 117.4, 122.2, 107.3, 144.2, 123.2, 124.6, 129.1, 137.5, 120.8, 107.8, 126.6, 141.5, 121.0, 108.8, 109.4, 122.6, 129.7, 120.7, 137.2, 134.3, 122.4, 102.2, 140.1, 141.3, 146.9, 136.0, 130.5, 130.4, 136.2, 146.5, 145.9, 115.3, 118.4, 112.1, 120.2, 126.3, 121.9, 128.7, 126.9, 130.3, 116.7, 119.5, 117.4, 136.6, 109.9, 131.8, 123.7, 130.8, 128.5, 136.4, 135.7, 141.2, 123.2, 121.5, 133.2, 125.3, 111.3, 102.5, 134.9, 113.1, 111.5, 111.2, 113.5, 119.8, 141.0, 149.1, 101.0, 121.4, 121.2, 117.6, 134.7, 138.5, 146.3, 113.0, 130.8, 109.7, 118.1, 121.9, 141.2, 118.9, 103.7, 132.2, 119.8, 117.0, 141.1, 117.1, 135.6, 112.7, 122.0, 121.3, 138.6, 117.4, 145.8]}, "cholesterol_mg_dl": {"original": [183.5, 144.3, 209.0, 172.0, 232.8, 215.9, 215.2, 171.2, 195.8, 205.0, 152.6, 134.6, 154.8, 156.2, 160.8, 224.5, 208.9, 90.0, 245.1, 167.1, 226.0, 165.1, 225.5, 217.0, 224.5, 210.0, 204.9, 179.0, 192.0, -999.0, 230.8, 179.5, 193.0, 193.3, 136.8, 168.3, 198.4, 230.0, 153.8, 260.8, 153.3, 163.1, 141.1, 141.3, 209.8, 226.8, 168.7, 226.7, 232.7, 240.2, 177.5, 198.3, 140.1, 202.9, 174.8, 168.2, 245.0, 250.8, 214.6, 228.2, 231.4, 181.6, 217.3, 201.0, 216.8, 213.7, 145.8, 228.5, 236.5, 154.8, 206.5, 220.1, 200.2, 199.8, 205.9, 186.2, 265.4, 174.4, 197.1, 226.6, 236.3, 246.8, 241.9, 166.9, 160.4, 226.8, 156.1, 207.2, 154.6, 169.8, 171.7, 253.0, 224.4, 173.9, 238.6, 189.9, 237.8, 230.5, 144.3, 190.9, 176.4, 147.7, 250.8, 187.4, 206.2, 236.5, 248.1, 153.9, 151.2, 225.8, 188.9, 173.1, 220.2, 156.7, 158.6, 169.4, 186.1, 246.5, 174.3, 181.6, 168.0, 298.2, 226.7, 153.7, 187.9, 170.2, 229.5, 191.2, 175.9, 127.3, 210.3, 173.1, 121.4, 176.5, 193.5, 207.2, 186.1, 247.1, 198.1, 198.0, 149.0, 191.0, 191.4, 236.8, 127.6, 171.1, 194.1, 225.4, 236.1, 212.2, 246.6, 206.7, 166.8, 197.5, 184.8, 160.8, 193.3, 184.0, 223.8, 209.9, 177.3, 217.6, 195.9, 243.1, 230.7, 224.0, 193.8, 220.7, 173.1, 224.1, 236.6, 171.5, 234.7, 181.3, 205.8, 240.8, 193.3, 185.3, 199.5, 172.7, 198.5, 260.9, 226.7, 217.6, 185.7, 211.0, 242.6, 197.4, 151.0, 214.3, 190.8, 188.8, 163.3, 160.6, 286.9, 225.9, 224.0, 153.0, 179.8, 184.9], "healed": [183.5, 144.3, 209.0, 172.0, 232.8, 215.9, 215.2, 171.2, 195.8, 205.0, 152.6, 134.6, 154.8, 156.2, 160.8, 224.5, 208.9, 104.46, 245.1, 167.1, 226.0, 165.1, 225.5, 217.0, 224.5, 210.0, 204.9, 179.0, 192.0, 205.5, 230.8, 179.5, 193.0, 193.3, 136.8, 168.3, 198.4, 230.0, 153.8, 260.8, 153.3, 163.1, 141.1, 141.3, 209.8, 226.8, 168.7, 226.7, 232.7, 240.2, 177.5, 198.3, 140.1, 202.9, 174.8, 168.2, 245.0, 250.8, 214.6, 228.2, 231.4, 181.6, 217.3, 201.0, 216.8, 213.7, 145.8, 228.5, 236.5, 154.8, 206.5, 220.1, 200.2, 199.8, 205.9, 186.2, 265.4, 174.4, 197.1, 226.6, 236.3, 246.8, 241.9, 166.9, 160.4, 226.8, 156.1, 207.2, 154.6, 169.8, 171.7, 253.0, 224.4, 173.9, 238.6, 189.9, 237.8, 230.5, 144.3, 190.9, 176.4, 147.7, 250.8, 187.4, 206.2, 236.5, 248.1, 153.9, 151.2, 225.8, 188.9, 173.1, 220.2, 156.7, 158.6, 169.4, 186.1, 246.5, 174.3, 181.6, 168.0, 291.76, 226.7, 153.7, 187.9, 170.2, 229.5, 191.2, 175.9, 127.3, 210.3, 173.1, 121.4, 176.5, 193.5, 207.2, 186.1, 247.1, 198.1, 198.0, 149.0, 191.0, 191.4, 236.8, 127.6, 171.1, 194.1, 225.4, 236.1, 212.2, 246.6, 206.7, 166.8, 197.5, 184.8, 160.8, 193.3, 184.0, 223.8, 209.9, 177.3, 217.6, 195.9, 243.1, 230.7, 224.0, 193.8, 220.7, 173.1, 224.1, 236.6, 171.5, 234.7, 181.3, 205.8, 240.8, 193.3, 185.3, 199.5, 172.7, 198.5, 260.9, 226.7, 217.6, 185.7, 211.0, 242.6, 197.4, 151.0, 214.3, 190.8, 188.8, 163.3, 160.6, 286.9, 225.9, 224.0, 153.0, 179.8, 184.9]}, "body_mass_index": {"original": [25.0, 27.2, 32.6, 27.2, 25.8, 23.9, 26.3, 25.7, 24.3, 27.9, 22.5, 26.6, 28.3, 34.9, 22.8, 25.0, 21.8, 24.9, 27.4, 29.1, 30.0, 23.7, 26.8, 22.0, 32.6, 28.3, 22.0, 23.4, 37.4, 26.2, 25.6, 26.9, 32.2, 32.5, 21.6, 15.3, 26.7, 30.9, 35.8, 27.9, 34.9, 36.2, 22.8, 29.7, 26.2, 24.3, 27.2, 22.5, 21.8, 25.4, 34.3, 27.3, 27.3, 24.6, 26.8, 28.4, 25.3, 24.7, 22.9, 26.6, 29.0, 25.1, 24.6, 27.7, 18.3, 27.7, 33.3, 21.0, 24.0, 20.8, 26.0, 30.2, 32.7, 32.0, 24.4, 29.0, 36.5, 32.3, 29.3, 24.6, 22.1, 19.5, 22.7, 24.8, 24.3, 29.1, 24.1, 27.3, 28.7, 27.8, 29.2, 28.1, 26.1, 29.1, 29.7, 17.7, 27.1, 32.2, 29.6, 27.0, 28.3, 26.3, 30.9, 24.5, 23.5, 27.5, 36.6, 21.6, 20.7, 27.5, 20.8, 30.1, 31.8, 22.2, 19.3, 27.9, 24.1, 26.1, 30.7, 23.4, 21.7, 33.5, 22.1, 30.2, 22.1, 20.5, 28.6, 26.9, 29.9, 27.5, 27.7, 24.5, 31.2, 27.0, 21.6, 26.4, 24.4, 34.6, 24.2, 28.0, 21.1, 30.5, 25.8, 24.1, 24.5, 32.6, 22.8, 30.3, 29.8, 17.6, 14.9, 23.5, 23.5, 20.2, 26.0, 22.8, 31.0, 35.7, 33.7, 26.7, 24.3, 20.0, 16.1, 29.9, 32.2, 28.1, 27.7, 29.2, 21.4, 26.1, 28.6, 29.5, 28.2, 29.3, 25.3, 25.5, 24.8, 22.6, 30.7, 20.7, 24.4, 32.2, 22.5, 29.5, 29.9, 25.3, 24.7, 27.9, 23.1, 23.1, 27.4, 28.3, 20.8, 28.5, 29.1, 28.3, 26.3, 18.0, 29.9, 25.0], "healed": [25.0, 27.2, 32.6, 27.2, 25.8, 23.9, 26.3, 25.7, 24.3, 27.9, 22.5, 26.6, 28.3, 34.9, 22.8, 26.05, 25.0, 21.8, 24.9, 27.4, 29.1, 30.0, 23.7, 26.8, 22.0, 32.6, 28.3, 22.0, 23.4, 37.4, 26.2, 25.6, 26.9, 32.2, 32.5, 21.6, 15.49, 26.7, 30.9, 35.8, 27.9, 34.9, 36.2, 22.8, 29.7, 26.2, 24.3, 27.2, 22.5, 21.8, 25.4, 34.3, 27.3, 27.3, 24.6, 26.8, 28.4, 25.3, 24.7, 22.9, 26.6, 29.0, 25.1, 24.6, 27.7, 18.3, 27.7, 33.3, 21.0, 24.0, 20.8, 26.0, 30.2, 32.7, 32.0, 24.4, 29.0, 36.5, 32.3, 29.3, 24.6, 22.1, 19.5, 22.7, 24.8, 24.3, 29.1, 24.1, 27.3, 28.7, 27.8, 29.2, 28.1, 26.1, 29.1, 29.7, 17.7, 27.1, 32.2, 29.6, 27.0, 28.3, 26.3, 30.9, 24.5, 23.5, 27.5, 36.6, 21.6, 20.7, 27.5, 20.8, 30.1, 31.8, 22.2, 19.3, 27.9, 24.1, 26.1, 30.7, 23.4, 21.7, 33.5, 22.1, 30.2, 22.1, 20.5, 28.6, 26.9, 29.9, 27.5, 27.7, 24.5, 31.2, 27.0, 21.6, 26.4, 24.4, 34.6, 24.2, 28.0, 21.1, 30.5, 25.8, 24.1, 24.5, 32.6, 22.8, 30.3, 29.8, 17.6, 15.49, 23.5, 23.5, 20.2, 26.0, 22.8, 31.0, 35.7, 33.7, 26.7, 24.3, 20.0, 16.1, 29.9, 32.2, 28.1, 27.7, 29.2, 21.4, 26.1, 28.6, 29.5, 28.2, 29.3, 25.3, 25.5, 24.8, 22.6, 30.7, 20.7, 24.4, 32.2, 22.5, 29.5, 29.9, 25.3, 24.7, 27.9, 23.1, 23.1, 27.4, 28.3, 20.8, 28.5, 29.1, 28.3, 26.3, 18.0, 29.9]}}, "corr_matrix": {"columns": ["age_years", "systolic_bp_mmhg", "cholesterol_mg_dl", "body_mass_index"], "values": [[1.0, -0.1, 0.04, -0.07], [-0.1, 1.0, -0.06, -0.0], [0.04, -0.06, 1.0, -0.11], [-0.07, -0.0, -0.11, 1.0]]}, "sample_orig": [{"patient_id": "PAT-20000", "age_years": "42", "gender": "Other", "systolic_bp_mmhg": "136.0", "cholesterol_mg_dl": "183.5", "body_mass_index": "25.0", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20001", "age_years": "46", "gender": "F", "systolic_bp_mmhg": "113.7", "cholesterol_mg_dl": "144.3", "body_mass_index": "27.2", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20002", "age_years": "60", "gender": "F", "systolic_bp_mmhg": "130.3", "cholesterol_mg_dl": "209.0", "body_mass_index": "32.6", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20003", "age_years": "64", "gender": "M", "systolic_bp_mmhg": "134.7", "cholesterol_mg_dl": "172.0", "body_mass_index": "27.2", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20004", "age_years": "69", "gender": "F", "systolic_bp_mmhg": "125.8", "cholesterol_mg_dl": "232.8", "body_mass_index": "25.8", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20005", "age_years": "60", "gender": "Other", "systolic_bp_mmhg": "128.4", "cholesterol_mg_dl": "215.9", "body_mass_index": "23.9", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20006", "age_years": "66", "gender": "M", "systolic_bp_mmhg": "109.4", "cholesterol_mg_dl": "215.2", "body_mass_index": "26.3", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20007", "age_years": "77", "gender": "M", "systolic_bp_mmhg": "120.6", "cholesterol_mg_dl": "171.2", "body_mass_index": "25.7", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20008", "age_years": "380", "gender": "F", "systolic_bp_mmhg": "121.5", "cholesterol_mg_dl": "195.8", "body_mass_index": "24.3", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20009", "age_years": "22", "gender": "F", "systolic_bp_mmhg": "118.8", "cholesterol_mg_dl": "205.0", "body_mass_index": "27.9", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20010", "age_years": "37", "gender": "F", "systolic_bp_mmhg": "113.0", "cholesterol_mg_dl": "152.6", "body_mass_index": "22.5", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20011", "age_years": "78", "gender": "M", "systolic_bp_mmhg": "137.5", "cholesterol_mg_dl": "134.6", "body_mass_index": "26.6", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20012", "age_years": "57", "gender": "M", "systolic_bp_mmhg": "114.3", "cholesterol_mg_dl": "154.8", "body_mass_index": "28.3", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20013", "age_years": "22", "gender": "Other", "systolic_bp_mmhg": "122.2", "cholesterol_mg_dl": "156.2", "body_mass_index": "34.9", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20014", "age_years": "74", "gender": "M", "systolic_bp_mmhg": "113.4", "cholesterol_mg_dl": "160.8", "body_mass_index": "22.8", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20015", "age_years": "35", "gender": "Other", "systolic_bp_mmhg": "112.4", "cholesterol_mg_dl": "224.5", "body_mass_index": "N/A", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20016", "age_years": "75", "gender": "M", "systolic_bp_mmhg": "129.0", "cholesterol_mg_dl": "208.9", "body_mass_index": "25.0", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20017", "age_years": "25", "gender": "Other", "systolic_bp_mmhg": "134.6", "cholesterol_mg_dl": "90.0", "body_mass_index": "21.8", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20018", "age_years": "77", "gender": "M", "systolic_bp_mmhg": "129.5", "cholesterol_mg_dl": "245.1", "body_mass_index": "24.9", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20019", "age_years": "37", "gender": "F", "systolic_bp_mmhg": "132.0", "cholesterol_mg_dl": "167.1", "body_mass_index": "27.4", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20020", "age_years": "85", "gender": "F", "systolic_bp_mmhg": "122.4", "cholesterol_mg_dl": "226.0", "body_mass_index": "29.1", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20021", "age_years": "19", "gender": "Other", "systolic_bp_mmhg": "120.8", "cholesterol_mg_dl": "165.1", "body_mass_index": "30.0", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20022", "age_years": "23", "gender": "F", "systolic_bp_mmhg": "122.8", "cholesterol_mg_dl": "225.5", "body_mass_index": "23.7", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20023", "age_years": "58", "gender": "F", "systolic_bp_mmhg": "107.0", "cholesterol_mg_dl": "217.0", "body_mass_index": "26.8", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20024", "age_years": "62", "gender": "Other", "systolic_bp_mmhg": "112.6", "cholesterol_mg_dl": "224.5", "body_mass_index": "22.0", "clinical_assessment": "Elevated"}], "sample_healed": [{"patient_id": "PAT-20000", "age_years": "42.0", "gender": "Other", "systolic_bp_mmhg": "136.0", "cholesterol_mg_dl": "183.5", "body_mass_index": "25.0", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20001", "age_years": "46.0", "gender": "F", "systolic_bp_mmhg": "113.7", "cholesterol_mg_dl": "144.3", "body_mass_index": "27.2", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20002", "age_years": "60.0", "gender": "F", "systolic_bp_mmhg": "130.3", "cholesterol_mg_dl": "209.0", "body_mass_index": "32.6", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20003", "age_years": "64.0", "gender": "M", "systolic_bp_mmhg": "134.7", "cholesterol_mg_dl": "172.0", "body_mass_index": "27.2", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20004", "age_years": "69.0", "gender": "F", "systolic_bp_mmhg": "125.8", "cholesterol_mg_dl": "232.8", "body_mass_index": "25.8", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20005", "age_years": "60.0", "gender": "Other", "systolic_bp_mmhg": "128.4", "cholesterol_mg_dl": "215.9", "body_mass_index": "23.9", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20006", "age_years": "66.0", "gender": "M", "systolic_bp_mmhg": "109.4", "cholesterol_mg_dl": "215.2", "body_mass_index": "26.3", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20007", "age_years": "77.0", "gender": "M", "systolic_bp_mmhg": "120.6", "cholesterol_mg_dl": "171.2", "body_mass_index": "25.7", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20008", "age_years": "124.12", "gender": "F", "systolic_bp_mmhg": "121.5", "cholesterol_mg_dl": "195.8", "body_mass_index": "24.3", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20009", "age_years": "22.0", "gender": "F", "systolic_bp_mmhg": "118.8", "cholesterol_mg_dl": "205.0", "body_mass_index": "27.9", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20010", "age_years": "37.0", "gender": "F", "systolic_bp_mmhg": "113.0", "cholesterol_mg_dl": "152.6", "body_mass_index": "22.5", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20011", "age_years": "78.0", "gender": "M", "systolic_bp_mmhg": "137.5", "cholesterol_mg_dl": "134.6", "body_mass_index": "26.6", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20012", "age_years": "57.0", "gender": "M", "systolic_bp_mmhg": "114.3", "cholesterol_mg_dl": "154.8", "body_mass_index": "28.3", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20013", "age_years": "22.0", "gender": "Other", "systolic_bp_mmhg": "122.2", "cholesterol_mg_dl": "156.2", "body_mass_index": "34.9", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20014", "age_years": "74.0", "gender": "M", "systolic_bp_mmhg": "113.4", "cholesterol_mg_dl": "160.8", "body_mass_index": "22.8", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20015", "age_years": "35.0", "gender": "Other", "systolic_bp_mmhg": "112.4", "cholesterol_mg_dl": "224.5", "body_mass_index": "26.05", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20016", "age_years": "75.0", "gender": "M", "systolic_bp_mmhg": "129.0", "cholesterol_mg_dl": "208.9", "body_mass_index": "25.0", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20017", "age_years": "25.0", "gender": "Other", "systolic_bp_mmhg": "134.6", "cholesterol_mg_dl": "104.46", "body_mass_index": "21.8", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20018", "age_years": "77.0", "gender": "M", "systolic_bp_mmhg": "129.5", "cholesterol_mg_dl": "245.1", "body_mass_index": "24.9", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20019", "age_years": "37.0", "gender": "F", "systolic_bp_mmhg": "132.0", "cholesterol_mg_dl": "167.1", "body_mass_index": "27.4", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20020", "age_years": "85.0", "gender": "F", "systolic_bp_mmhg": "122.4", "cholesterol_mg_dl": "226.0", "body_mass_index": "29.1", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20021", "age_years": "19.0", "gender": "Other", "systolic_bp_mmhg": "120.8", "cholesterol_mg_dl": "165.1", "body_mass_index": "30.0", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20022", "age_years": "23.0", "gender": "F", "systolic_bp_mmhg": "122.8", "cholesterol_mg_dl": "225.5", "body_mass_index": "23.7", "clinical_assessment": "Elevated"}, {"patient_id": "PAT-20023", "age_years": "58.0", "gender": "F", "systolic_bp_mmhg": "107.0", "cholesterol_mg_dl": "217.0", "body_mass_index": "26.8", "clinical_assessment": "Normal"}, {"patient_id": "PAT-20024", "age_years": "62.0", "gender": "Other", "systolic_bp_mmhg": "112.6", "cholesterol_mg_dl": "224.5", "body_mass_index": "22.0", "clinical_assessment": "Elevated"}], "ledger_actions": [{"timestamp": "12:47:59.965", "row_index": 29, "column": "cholesterol_mg_dl", "issue_type": "MISSING_VALUE", "original_value": "-999", "healed_value": null, "strategy": "Converted masked sentinel string to standard NaN", "confidence_score": 0.99}, {"timestamp": "12:47:59.966", "row_index": 15, "column": "body_mass_index", "issue_type": "MISSING_VALUE", "original_value": "N/A", "healed_value": null, "strategy": "Converted masked sentinel string to standard NaN", "confidence_score": 0.99}, {"timestamp": "12:47:59.969", "row_index": 0, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 42, "healed_value": 42.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 1, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 46, "healed_value": 46.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 2, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 60, "healed_value": 60.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 3, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 64, "healed_value": 64.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 4, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 69, "healed_value": 69.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 5, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 60, "healed_value": 60.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 6, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 66, "healed_value": 66.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 7, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 77, "healed_value": 77.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 8, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 380, "healed_value": 380.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 9, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 22, "healed_value": 22.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 10, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 37, "healed_value": 37.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 11, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 78, "healed_value": 78.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 12, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 57, "healed_value": 57.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 13, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 22, "healed_value": 22.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 14, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 74, "healed_value": 74.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 15, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 35, "healed_value": 35.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 16, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 75, "healed_value": 75.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 17, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 25, "healed_value": 25.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 18, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 77, "healed_value": 77.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 19, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 37, "healed_value": 37.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 20, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 85, "healed_value": 85.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 21, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 19, "healed_value": 19.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 22, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 23, "healed_value": 23.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 23, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 58, "healed_value": 58.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 24, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 62, "healed_value": 62.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 25, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 84, "healed_value": 84.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 26, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 36, "healed_value": 36.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 27, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 64, "healed_value": 64.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 28, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 34, "healed_value": 34.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 29, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 48, "healed_value": 48.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 30, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 23, "healed_value": 23.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 31, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 24, "healed_value": 24.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 32, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 22, "healed_value": 22.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 33, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 75, "healed_value": 75.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 34, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 36, "healed_value": 36.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.969", "row_index": 35, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 52, "healed_value": 52.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 36, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 75, "healed_value": 75.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 37, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 31, "healed_value": 31.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 38, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 30, "healed_value": 30.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 39, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 42, "healed_value": 42.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 40, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 84, "healed_value": 84.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 41, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 85, "healed_value": 85.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 42, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 34, "healed_value": 34.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 43, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 75, "healed_value": 75.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 44, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 29, "healed_value": 29.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 45, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 85, "healed_value": 85.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 46, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 48, "healed_value": 48.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 47, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 60, "healed_value": 60.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 48, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 48, "healed_value": 48.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 49, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 80, "healed_value": 80.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 50, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 42, "healed_value": 42.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 51, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 66, "healed_value": 66.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 52, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 65, "healed_value": 65.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 53, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 56, "healed_value": 56.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 54, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 79, "healed_value": 79.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 55, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 66, "healed_value": 66.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 56, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 31, "healed_value": 31.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 57, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 52, "healed_value": 52.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 58, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 54, "healed_value": 54.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 59, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 47, "healed_value": 47.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 60, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 24, "healed_value": 24.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 61, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 76, "healed_value": 76.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 62, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 64, "healed_value": 64.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 63, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 30, "healed_value": 30.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 64, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 25, "healed_value": 25.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 65, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 27, "healed_value": 27.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 66, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 83, "healed_value": 83.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 67, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 31, "healed_value": 31.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 68, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 38, "healed_value": 38.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 69, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 49, "healed_value": 49.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 70, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 42, "healed_value": 42.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 71, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 79, "healed_value": 79.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 72, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 41, "healed_value": 41.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 73, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 27, "healed_value": 27.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 74, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 18, "healed_value": 18.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.970", "row_index": 75, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 70, "healed_value": 70.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 76, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 36, "healed_value": 36.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 77, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 46, "healed_value": 46.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 78, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 84, "healed_value": 84.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 79, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 19, "healed_value": 19.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 80, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 41, "healed_value": 41.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 81, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 28, "healed_value": 28.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 82, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 68, "healed_value": 68.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 83, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 25, "healed_value": 25.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 84, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 40, "healed_value": 40.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 85, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 18, "healed_value": 18.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 86, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 82, "healed_value": 82.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 87, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 37, "healed_value": 37.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 88, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 81, "healed_value": 81.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 89, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 59, "healed_value": 59.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 90, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 22, "healed_value": 22.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 91, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 59, "healed_value": 59.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 92, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 77, "healed_value": 77.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 93, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 43, "healed_value": 43.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 94, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 31, "healed_value": 31.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 95, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 71, "healed_value": 71.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 96, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 61, "healed_value": 61.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 97, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 73, "healed_value": 73.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 98, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 43, "healed_value": 43.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 99, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 57, "healed_value": 57.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 100, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 62, "healed_value": 62.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 101, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 69, "healed_value": 69.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 102, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 69, "healed_value": 69.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 103, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 31, "healed_value": 31.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 104, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 27, "healed_value": 27.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 105, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 84, "healed_value": 84.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 106, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 42, "healed_value": 42.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 107, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 38, "healed_value": 38.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 108, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 38, "healed_value": 38.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 109, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 53, "healed_value": 53.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 110, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 41, "healed_value": 41.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 111, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 39, "healed_value": 39.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 112, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 23, "healed_value": 23.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 113, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 72, "healed_value": 72.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 114, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 60, "healed_value": 60.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.971", "row_index": 115, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 76, "healed_value": 76.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 116, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 50, "healed_value": 50.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 117, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 75, "healed_value": 75.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 118, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 25, "healed_value": 25.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 119, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 57, "healed_value": 57.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 120, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 33, "healed_value": 33.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 121, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 75, "healed_value": 75.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 122, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 64, "healed_value": 64.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 123, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 41, "healed_value": 41.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 124, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 22, "healed_value": 22.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 125, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 68, "healed_value": 68.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 126, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 25, "healed_value": 25.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 127, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 32, "healed_value": 32.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 128, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 61, "healed_value": 61.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 129, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 41, "healed_value": 41.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 130, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 50, "healed_value": 50.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 131, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 22, "healed_value": 22.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 132, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 55, "healed_value": 55.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 133, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 49, "healed_value": 49.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 134, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 61, "healed_value": 61.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 135, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 85, "healed_value": 85.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 136, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 40, "healed_value": 40.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 137, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 22, "healed_value": 22.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 138, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 45, "healed_value": 45.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 139, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 77, "healed_value": 77.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 140, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 68, "healed_value": 68.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 141, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 31, "healed_value": 31.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 142, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 18, "healed_value": 18.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 143, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 51, "healed_value": 51.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 144, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 46, "healed_value": 46.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 145, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 53, "healed_value": 53.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 146, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 61, "healed_value": 61.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}, {"timestamp": "12:47:59.972", "row_index": 147, "column": "age_years", "issue_type": "CORRUPT_TYPE", "original_value": 49, "healed_value": 49.0, "strategy": "Parsed currency/percent/dirty string to float", "confidence_score": 0.98}], "columns": ["patient_id", "age_years", "gender", "systolic_bp_mmhg", "cholesterol_mg_dl", "body_mass_index", "clinical_assessment"], "insights": {"executive_summary": "The AegisData Autonomous Pipeline ingested **400 rows** and **7 features** for **Clinical_Patient_Vitals**. Prior to intervention, the data exhibited substantial degradation with a raw Data Health Score of **99.8/100** (A+ rating). The pipeline executed **419 self-healing operations** without human intervention, elevating dataset fidelity to **99.9/100** (A+ rating). The sanitized dataset is verified and primed for analytical models, forecasting, and BI consumption.", "data_health_assessment": {"initial_score": 99.8, "final_score": 99.9, "score_gain": 0.1, "initial_grade": "A+", "final_grade": "A+", "total_actions": 419, "narrative_points": ["Resolved **4 missing / sentinel data points** using adaptive skewness-weighted median/mean and group-conditioned imputation.", "Repaired **400 type & format corruptions**, normalizing currency symbols, unparsed percentage strings, and conflicting timestamp formats.", "Stabilized **13 statistical outliers** using adaptive IQR boundary winsorization, preventing downstream variance distortion.", "Harmonized **2 categorical typo inconsistencies** via fuzzy consensus matching against dominant population categories."], "issues_breakdown": {"MISSING_VALUE": 4, "CORRUPT_TYPE": 400, "TYPO_CORRECTED": 2, "OUTLIER_BOUNDED": 13}}, "statistical_discoveries": [{"column": "age_years", "mean": 53.39, "median": 53.5, "std": 19.92, "min": 18.0, "max": 124.12, "skewness": -0.01, "narrative": "**age_years** spans from **18.00** to **124.12** with a central median of **53.50** and standard deviation of **19.92**. The distribution exhibits a symmetrical bell curve."}, {"column": "systolic_bp_mmhg", "mean": 122.99, "median": 122.3, "std": 12.66, "min": 91.49, "max": 154.39, "skewness": -0.02, "narrative": "**systolic_bp_mmhg** spans from **91.49** to **154.39** with a central median of **122.30** and standard deviation of **12.66**. The distribution exhibits a symmetrical bell curve."}, {"column": "cholesterol_mg_dl", "mean": 198.74, "median": 199.65, "std": 32.63, "min": 104.46, "max": 291.76, "skewness": -0.01, "narrative": "**cholesterol_mg_dl** spans from **104.46** to **291.76** with a central median of **199.65** and standard deviation of **32.63**. The distribution exhibits a symmetrical bell curve."}, {"column": "body_mass_index", "mean": 26.64, "median": 26.45, "std": 4.24, "min": 15.49, "max": 37.59, "skewness": 0.09, "narrative": "**body_mass_index** spans from **15.49** to **37.59** with a central median of **26.45** and standard deviation of **4.24**. The distribution exhibits a symmetrical bell curve."}], "correlation_insights": [], "anomaly_alerts": [{"severity": "HIGH", "column": "age_years", "title": "High Anomaly Density in 'age_years'", "description": "Column 'age_years' underwent **401 repairs** (100.2% of total rows). This signals upstream data logging instability or unstandardized input interfaces."}, {"severity": "INFO", "column": "Numeric Features", "title": "Bounded 13 Extreme Numerical Spikes", "description": "Identified 13 extreme outlier observations exceeding 3 standard IQR ranges. Values have been safely winsorized to preserve distributional stability."}], "strategic_recommendations": ["**Upstream Ingestion Schema Enforcement**: Implement strict regex validation at the ingestion layer to enforce ISO-8601 timestamps and unformatted decimal floats, preventing dirty string pollution.", "**Dropdown UI Controls for Categorical Inputs**: The presence of categorical typos indicates free-text inputs. Transitioning frontend capture forms to predefined dropdown select menus will eliminate manual typos.", "**Continuous Automated Pipeline Deployment**: Maintain this autonomous self-healing pipeline as an automated pre-processing stage to safeguard downstream dashboards, machine learning models, and executive reporting."]}};
+
+    let currentTab = 'insights';
+    let currentDiffMode = 'healed';
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      initHeaderAndKPIs();
+      initInsightsTab();
+      initVisualsTab();
+      initDiffTab();
+      initLedgerTab();
+    });
+
+    function initHeaderAndKPIs() {
+      document.getElementById('banner-dataset-name').textContent = PIPELINE_DATA.dataset_name;
+      document.getElementById('kpi-final-score').textContent = PIPELINE_DATA.final_score;
+      document.getElementById('kpi-final-grade').textContent = PIPELINE_DATA.final_grade;
+      document.getElementById('kpi-initial-score').textContent = PIPELINE_DATA.initial_score;
+      document.getElementById('kpi-score-gain').textContent = `+${PIPELINE_DATA.score_gain} pts`;
+      document.getElementById('kpi-total-repairs').textContent = PIPELINE_DATA.total_repairs;
+      
+      const missingCount = PIPELINE_DATA.issue_counts['MISSING_VALUE'] || 0;
+      const typeCount = (PIPELINE_DATA.issue_counts['CORRUPT_TYPE'] || 0) + (PIPELINE_DATA.issue_counts['OUTLIER_BOUNDED'] || 0);
+      document.getElementById('kpi-missing-imputed').textContent = missingCount;
+      document.getElementById('kpi-type-outliers').textContent = typeCount;
+    }
+
+    function switchTab(tabName) {
+      const tabs = ['insights', 'visuals', 'diff', 'ledger'];
+      tabs.forEach(t => {
+        document.getElementById(`tab-content-${t}`).classList.add('hidden');
+        const btn = document.getElementById(`tab-btn-${t}`);
+        btn.classList.remove('tab-active');
+        btn.classList.add('text-gray-400');
+      });
+
+      document.getElementById(`tab-content-${tabName}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-btn-${tabName}`);
+      activeBtn.classList.add('tab-active');
+      activeBtn.classList.remove('text-gray-400');
+      currentTab = tabName;
+
+      if (tabName === 'visuals') {
+        renderDistributionChart();
+        renderBreakdownChart();
+        renderHeatmap();
+      }
+    }
+
+    function initInsightsTab() {
+      const insights = PIPELINE_DATA.insights;
+      document.getElementById('narrative-executive-summary').innerHTML = formatMarkdown(insights.executive_summary);
+
+      // Render correlations
+      const corrContainer = document.getElementById('correlations-container');
+      corrContainer.innerHTML = '';
+      if (!insights.correlation_insights || insights.correlation_insights.length === 0) {
+        corrContainer.innerHTML = '<p class="text-xs text-gray-500">No strong bivariate correlations detected.</p>';
+      } else {
+        insights.correlation_insights.forEach(c => {
+          const card = document.createElement('div');
+          card.className = 'p-3 bg-gray-900/70 border border-gray-800 rounded-xl text-xs space-y-1';
+          card.innerHTML = `
+            <div class="flex items-center justify-between">
+              <span class="font-semibold text-emerald-400">${c.feature_a} &harr; ${c.feature_b}</span>
+              <span class="badge bg-emerald-500/20 text-emerald-300">r = ${c.coefficient > 0 ? '+' : ''}${c.coefficient}</span>
+            </div>
+            <p class="text-gray-300">${formatMarkdown(c.narrative)}</p>
+          `;
+          corrContainer.appendChild(card);
+        });
+      }
+
+      // Render Anomaly Alerts
+      const alertsContainer = document.getElementById('alerts-container');
+      alertsContainer.innerHTML = '';
+      if (!insights.anomaly_alerts || insights.anomaly_alerts.length === 0) {
+        alertsContainer.innerHTML = '<p class="text-xs text-gray-500">No anomalous clusters detected.</p>';
+      } else {
+        insights.anomaly_alerts.forEach(a => {
+          const isHigh = a.severity === 'HIGH';
+          const card = document.createElement('div');
+          card.className = `p-3 bg-gray-900/70 border rounded-xl text-xs space-y-1 ${isHigh ? 'border-rose-500/30' : 'border-amber-500/30'}`;
+          card.innerHTML = `
+            <div class="flex items-center justify-between">
+              <span class="font-semibold text-white">${a.title}</span>
+              <span class="badge ${isHigh ? 'bg-rose-500/20 text-rose-400' : 'bg-amber-500/20 text-amber-400'}">${a.severity}</span>
+            </div>
+            <p class="text-gray-300">${formatMarkdown(a.description)}</p>
+          `;
+          alertsContainer.appendChild(card);
+        });
+      }
+
+      // Render Recommendations
+      const recContainer = document.getElementById('recommendations-container');
+      recContainer.innerHTML = '';
+      insights.strategic_recommendations.forEach((r, idx) => {
+        const item = document.createElement('div');
+        item.className = 'p-3.5 bg-gray-900/60 border border-gray-800 rounded-xl text-xs flex gap-3 items-start';
+        item.innerHTML = `
+          <div class="w-5 h-5 rounded-full bg-blue-600/30 text-blue-400 font-bold flex items-center justify-center flex-shrink-0 text-[11px] mt-0.5">${idx + 1}</div>
+          <div class="text-gray-300 leading-relaxed">${formatMarkdown(r)}</div>
+        `;
+        recContainer.appendChild(item);
+      });
+    }
+
+    function initVisualsTab() {
+      const select = document.getElementById('feature-select');
+      select.innerHTML = '';
+      const distKeys = Object.keys(PIPELINE_DATA.distribution_data);
+      distKeys.forEach(k => {
+        const opt = document.createElement('option');
+        opt.value = k;
+        opt.textContent = k;
+        select.appendChild(opt);
+      });
+    }
+
+    function renderDistributionChart() {
+      const canvas = document.getElementById('distribution-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+      const feature = document.getElementById('feature-select').value;
+      const data = PIPELINE_DATA.distribution_data[feature];
+      if (!data) return;
+
+      const w = rect.width;
+      const h = rect.height;
+      ctx.clearRect(0, 0, w, h);
+
+      // Build bins
+      const allVals = [...data.original, ...data.healed];
+      const minVal = Math.min(...allVals);
+      const maxVal = Math.max(...allVals);
+      const binCount = 18;
+      const binWidth = (maxVal - minVal) / binCount || 1;
+
+      const origBins = new Array(binCount).fill(0);
+      const healedBins = new Array(binCount).fill(0);
+
+      data.original.forEach(v => {
+        const b = Math.min(binCount - 1, Math.max(0, Math.floor((v - minVal) / binWidth)));
+        origBins[b]++;
+      });
+      data.healed.forEach(v => {
+        const b = Math.min(binCount - 1, Math.max(0, Math.floor((v - minVal) / binWidth)));
+        healedBins[b]++;
+      });
+
+      const maxFreq = Math.max(...origBins, ...healedBins, 1);
+      const padLeft = 40;
+      const padBottom = 30;
+      const plotW = w - padLeft - 20;
+      const plotH = h - padBottom - 20;
+
+      // Draw Grid
+      ctx.strokeStyle = '#1f2937';
+      ctx.lineWidth = 1;
+      for (let i = 0; i <= 4; i++) {
+        const y = 20 + (plotH / 4) * i;
+        ctx.beginPath();
+        ctx.moveTo(padLeft, y);
+        ctx.lineTo(w - 20, y);
+        ctx.stroke();
+
+        ctx.fillStyle = '#6b7280';
+        ctx.font = '10px sans-serif';
+        const labelVal = Math.round(maxFreq - (maxFreq / 4) * i);
+        ctx.fillText(labelVal, 10, y + 3);
+      }
+
+      const barW = (plotW / binCount) * 0.4;
+      const step = plotW / binCount;
+
+      for (let i = 0; i < binCount; i++) {
+        const x = padLeft + i * step;
+
+        // Raw Bar (rose)
+        const origH = (origBins[i] / maxFreq) * plotH;
+        ctx.fillStyle = 'rgba(239, 68, 68, 0.6)';
+        ctx.fillRect(x, 20 + (plotH - origH), barW, origH);
+
+        // Healed Bar (emerald)
+        const healedH = (healedBins[i] / maxFreq) * plotH;
+        ctx.fillStyle = 'rgba(16, 185, 129, 0.7)';
+        ctx.fillRect(x + barW + 2, 20 + (plotH - healedH), barW, healedH);
+
+        // X label every 3 bins
+        if (i % 3 === 0) {
+          ctx.fillStyle = '#9ca3af';
+          ctx.font = '9px sans-serif';
+          const valLabel = Math.round(minVal + i * binWidth);
+          ctx.fillText(valLabel, x, h - 10);
+        }
+      }
+    }
+
+    function renderBreakdownChart() {
+      const canvas = document.getElementById('breakdown-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+      const w = rect.width;
+      const h = rect.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const counts = PIPELINE_DATA.issue_counts;
+      const keys = Object.keys(counts);
+      if (keys.length === 0) return;
+
+      const colors = ['#f59e0b', '#8b5cf6', '#3b82f6', '#10b981', '#ec4899', '#6366f1'];
+      const maxVal = Math.max(...Object.values(counts), 1);
+      const padLeft = 140;
+      const barH = 20;
+      const gap = 14;
+
+      keys.forEach((k, idx) => {
+        const y = 20 + idx * (barH + gap);
+        const val = counts[k];
+        const barW = ((w - padLeft - 60) * (val / maxVal));
+
+        // Label
+        ctx.fillStyle = '#d1d5db';
+        ctx.font = '11px sans-serif';
+        const displayKey = k.replace(/_/g, ' ');
+        ctx.fillText(displayKey, 10, y + 14);
+
+        // Bar
+        ctx.fillStyle = colors[idx % colors.length];
+        ctx.beginPath();
+        ctx.roundRect(padLeft, y, Math.max(barW, 4), barH, 4);
+        ctx.fill();
+
+        // Count label
+        ctx.fillStyle = '#9ca3af';
+        ctx.fillText(val, padLeft + barW + 8, y + 14);
+      });
+    }
+
+    function renderHeatmap() {
+      const container = document.getElementById('heatmap-container');
+      const corr = PIPELINE_DATA.corr_matrix;
+      if (!corr || !corr.columns || corr.columns.length === 0) {
+        container.innerHTML = '<p class="text-xs text-gray-500">Insufficient numeric features for correlation matrix.</p>';
+        return;
+      }
+
+      let html = '<table class="w-full text-xs text-center border-collapse"><thead><tr><th class="p-2 text-left text-gray-400"></th>';
+      corr.columns.forEach(c => {
+        html += `<th class="p-2 text-gray-300 font-medium truncate max-w-[80px]" title="${c}">${c}</th>`;
+      });
+      html += '</tr></thead><tbody>';
+
+      corr.columns.forEach((rowName, rIdx) => {
+        html += `<tr><td class="p-2 text-left font-medium text-gray-300 truncate max-w-[100px]" title="${rowName}">${rowName}</td>`;
+        corr.columns.forEach((colName, cIdx) => {
+          const val = corr.values[rIdx][cIdx];
+          let bg = 'rgba(55, 65, 81, 0.4)';
+          let textCol = '#9ca3af';
+          if (val > 0) {
+            bg = `rgba(16, 185, 129, ${Math.min(0.9, val * 0.9 + 0.1)})`;
+            textCol = val > 0.4 ? '#ffffff' : '#a7f3d0';
+          } else if (val < 0) {
+            bg = `rgba(239, 68, 68, ${Math.min(0.9, Math.abs(val) * 0.9 + 0.1)})`;
+            textCol = Math.abs(val) > 0.4 ? '#ffffff' : '#fecaca';
+          }
+          html += `<td class="p-2 font-mono font-medium rounded m-0.5" style="background-color: ${bg}; color: ${textCol};">${val.toFixed(2)}</td>`;
+        });
+        html += '</tr>';
+      });
+      html += '</tbody></table>';
+      container.innerHTML = html;
+    }
+
+    function initDiffTab() {
+      renderDiffTable();
+    }
+
+    function toggleDiffMode(mode) {
+      currentDiffMode = mode;
+      document.getElementById('diff-btn-healed').className = mode === 'healed'
+        ? 'px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-medium'
+        : 'px-3 py-1.5 bg-gray-800 text-gray-400 rounded-lg text-xs font-medium';
+      document.getElementById('diff-btn-raw').className = mode === 'raw'
+        ? 'px-3 py-1.5 bg-blue-600 text-white rounded-lg text-xs font-medium'
+        : 'px-3 py-1.5 bg-gray-800 text-gray-400 rounded-lg text-xs font-medium';
+      renderDiffTable();
+    }
+
+    function renderDiffTable() {
+      const cols = PIPELINE_DATA.columns;
+      const head = document.getElementById('diff-table-head');
+      const body = document.getElementById('diff-table-body');
+      
+      head.innerHTML = `<tr><th class="px-3 py-2.5">#</th>${cols.map(c => `<th class="px-3 py-2.5">${c}</th>`).join('')}</tr>`;
+      
+      const records = currentDiffMode === 'healed' ? PIPELINE_DATA.sample_healed : PIPELINE_DATA.sample_orig;
+      const altRecords = currentDiffMode === 'healed' ? PIPELINE_DATA.sample_orig : PIPELINE_DATA.sample_healed;
+
+      body.innerHTML = '';
+      records.forEach((row, rIdx) => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-gray-800/40 transition';
+        let cells = `<td class="px-3 py-2 text-gray-500 font-mono text-[11px]">${rIdx + 1}</td>`;
+        cols.forEach(c => {
+          const val = row[c] !== undefined ? row[c] : '—';
+          const altVal = altRecords[rIdx] && altRecords[rIdx][c] !== undefined ? altRecords[rIdx][c] : '—';
+          const isChanged = String(val) !== String(altVal);
+          
+          if (isChanged && currentDiffMode === 'healed') {
+            cells += `<td class="px-3 py-2"><span class="diff-healed px-1.5 py-0.5 rounded text-[11px]" title="Original was: ${altVal}">${val}</span></td>`;
+          } else if (isChanged && currentDiffMode === 'raw') {
+            cells += `<td class="px-3 py-2"><span class="bg-rose-500/20 text-rose-300 border border-rose-500/40 px-1.5 py-0.5 rounded text-[11px]">${val}</span></td>`;
+          } else {
+            cells += `<td class="px-3 py-2 text-gray-300">${val}</td>`;
+          }
+        });
+        tr.innerHTML = cells;
+        body.appendChild(tr);
+      });
+    }
+
+    function initLedgerTab() {
+      renderLedgerRows(PIPELINE_DATA.ledger_actions);
+    }
+
+    function renderLedgerRows(actions) {
+      const body = document.getElementById('ledger-table-body');
+      body.innerHTML = '';
+      if (!actions || actions.length === 0) {
+        body.innerHTML = '<tr><td colspan="8" class="px-4 py-8 text-center text-gray-500">No healing actions match query.</td></tr>';
+        return;
+      }
+      actions.forEach(a => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-gray-800/40 transition';
+        const typeBadge = a.issue_type === 'MISSING_VALUE' ? 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
+          : a.issue_type === 'OUTLIER_BOUNDED' ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+          : a.issue_type === 'CORRUPT_TYPE' ? 'bg-purple-500/20 text-purple-400 border border-purple-500/30'
+          : 'bg-blue-500/20 text-blue-400 border border-blue-500/30';
+
+        tr.innerHTML = `
+          <td class="px-4 py-2 font-mono text-[11px] text-gray-400">${a.timestamp}</td>
+          <td class="px-4 py-2 font-mono text-[11px] text-gray-400">${a.row_index >= 0 ? a.row_index : 'Schema'}</td>
+          <td class="px-4 py-2 font-medium text-gray-200">${a.column}</td>
+          <td class="px-4 py-2"><span class="badge ${typeBadge}">${a.issue_type}</span></td>
+          <td class="px-4 py-2 font-mono text-gray-400 max-w-[120px] truncate" title="${a.original_value}">${a.original_value !== null ? a.original_value : 'null'}</td>
+          <td class="px-4 py-2 font-mono text-emerald-400 font-medium max-w-[120px] truncate" title="${a.healed_value}">${a.healed_value}</td>
+          <td class="px-4 py-2 text-gray-300 text-[11px] max-w-[180px] truncate" title="${a.strategy}">${a.strategy}</td>
+          <td class="px-4 py-2 font-mono text-emerald-400 text-[11px]">${(a.confidence_score * 100).toFixed(0)}%</td>
+        `;
+        body.appendChild(tr);
+      });
+    }
+
+    function filterLedger() {
+      const q = document.getElementById('ledger-search').value.toLowerCase();
+      const filtered = PIPELINE_DATA.ledger_actions.filter(a => 
+        a.column.toLowerCase().includes(q) ||
+        a.issue_type.toLowerCase().includes(q) ||
+        a.strategy.toLowerCase().includes(q) ||
+        String(a.original_value).toLowerCase().includes(q)
+      );
+      renderLedgerRows(filtered);
+    }
+
+    function formatMarkdown(text) {
+      if (!text) return '';
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold text-white">$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em class="text-gray-300">$1</em>');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,2042 @@
+{
+  "dataset_name": "Global_Ecommerce_Transactions",
+  "created_at": "2026-10-30T12:47:59.419584",
+  "total_healing_actions": 1585,
+  "initial_health_score": 88.7,
+  "final_health_score": 99.4,
+  "score_improvement": 10.7,
+  "initial_grade": "B",
+  "final_grade": "A+",
+  "issues_resolved_by_type": {
+    "SCHEMA_FIXED": 11,
+    "MISSING_VALUE": 182,
+    "CORRUPT_TYPE": 1273,
+    "TYPO_CORRECTED": 27,
+    "OUTLIER_BOUNDED": 87,
+    "DUPLICATE_PURGED": 5
+  },
+  "repairs_by_column": {
+    " Order_ID ": 1,
+    "Customer_ID": 1,
+    "Transaction_Date": 1,
+    "Product_Category": 1,
+    "Sales_Region": 1,
+    "Unit_Price": 1,
+    "Quantity_Ordered": 1,
+    "Discount_Rate": 1,
+    "Shipping_Days": 1,
+    "Payment_Method": 1,
+    "Customer_Rating": 1,
+    "unit_price": 184,
+    "discount_rate": 144,
+    "customer_rating": 58,
+    "transaction_date": 324,
+    "quantity_ordered": 421,
+    "shipping_days": 411,
+    "product_category": 9,
+    "sales_region": 18,
+    "*all_columns*": 5
+  },
+  "actions_sample": [
+    {
+      "timestamp": "12:47:59.500",
+      "row_index": -1,
+      "column": " Order_ID ",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": " Order_ID ",
+      "healed_value": "order_id",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.501",
+      "row_index": -1,
+      "column": "Customer_ID",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": "Customer_ID",
+      "healed_value": "customer_id",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.501",
+      "row_index": -1,
+      "column": "Transaction_Date",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": "Transaction_Date",
+      "healed_value": "transaction_date",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.501",
+      "row_index": -1,
+      "column": "Product_Category",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": "Product_Category",
+      "healed_value": "product_category",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.501",
+      "row_index": -1,
+      "column": "Sales_Region",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": "Sales_Region",
+      "healed_value": "sales_region",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.502",
+      "row_index": -1,
+      "column": "Unit_Price",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": "Unit_Price",
+      "healed_value": "unit_price",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.502",
+      "row_index": -1,
+      "column": "Quantity_Ordered",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": "Quantity_Ordered",
+      "healed_value": "quantity_ordered",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.502",
+      "row_index": -1,
+      "column": "Discount_Rate",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": "Discount_Rate",
+      "healed_value": "discount_rate",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.502",
+      "row_index": -1,
+      "column": "Shipping_Days",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": "Shipping_Days",
+      "healed_value": "shipping_days",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.502",
+      "row_index": -1,
+      "column": "Payment_Method",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": "Payment_Method",
+      "healed_value": "payment_method",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.502",
+      "row_index": -1,
+      "column": "Customer_Rating",
+      "issue_type": "SCHEMA_FIXED",
+      "original_value": "Customer_Rating",
+      "healed_value": "customer_rating",
+      "strategy": "Header whitespace & syntax normalization",
+      "confidence_score": 1.0
+    },
+    {
+      "timestamp": "12:47:59.508",
+      "row_index": 3,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.508",
+      "row_index": 14,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "??",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.508",
+      "row_index": 25,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.508",
+      "row_index": 36,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "missing",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.508",
+      "row_index": 47,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.508",
+      "row_index": 58,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.508",
+      "row_index": 69,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "None",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.509",
+      "row_index": 80,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.509",
+      "row_index": 91,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.509",
+      "row_index": 102,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.509",
+      "row_index": 113,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.509",
+      "row_index": 124,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "None",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.509",
+      "row_index": 135,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.509",
+      "row_index": 146,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "??",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.509",
+      "row_index": 157,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 168,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 179,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 190,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 201,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 212,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "None",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 223,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 234,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 245,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 256,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 267,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "None",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 278,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "missing",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 289,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 300,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "None",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 311,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 322,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "??",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 333,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 344,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 355,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "??",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 366,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 377,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 388,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 399,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "None",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.510",
+      "row_index": 404,
+      "column": "unit_price",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "??",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 5,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 22,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "??",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 39,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "??",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 56,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 73,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 90,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 107,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 124,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 141,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 158,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "??",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 175,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 192,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 209,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 226,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 243,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 260,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 277,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 294,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 311,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "null",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 328,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.512",
+      "row_index": 345,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "??",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.513",
+      "row_index": 362,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "??",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.513",
+      "row_index": 379,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.513",
+      "row_index": 396,
+      "column": "discount_rate",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.514",
+      "row_index": 7,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.514",
+      "row_index": 21,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 35,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 49,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 63,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "undefined",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 77,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "undefined",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 91,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 105,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 119,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 133,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "undefined",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 147,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 161,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 175,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 189,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 203,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 217,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 231,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "undefined",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 245,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "undefined",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 259,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 273,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "undefined",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 287,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "undefined",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 301,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 315,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "undefined",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 329,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "undefined",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.515",
+      "row_index": 343,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.516",
+      "row_index": 357,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.516",
+      "row_index": 371,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.516",
+      "row_index": 385,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.516",
+      "row_index": 399,
+      "column": "customer_rating",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.522",
+      "row_index": 1,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "29/11/2023",
+      "healed_value": "2023-11-29 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.527",
+      "row_index": 2,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "May 23, 2023",
+      "healed_value": "2023-05-23 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.527",
+      "row_index": 3,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1674514800",
+      "healed_value": "2023-01-24 04:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.531",
+      "row_index": 4,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/10/23",
+      "healed_value": "2023-10-23 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.532",
+      "row_index": 6,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "25/03/2023",
+      "healed_value": "2023-03-25 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.532",
+      "row_index": 7,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "May 18, 2023",
+      "healed_value": "2023-05-18 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.532",
+      "row_index": 8,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1683500400",
+      "healed_value": "2023-05-08 04:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.533",
+      "row_index": 9,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/01/25",
+      "healed_value": "2023-01-25 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.533",
+      "row_index": 11,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "15/05/2023",
+      "healed_value": "2023-05-15 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.534",
+      "row_index": 12,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Sep 29, 2023",
+      "healed_value": "2023-09-29 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.534",
+      "row_index": 13,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1697594400",
+      "healed_value": "2023-10-18 07:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.534",
+      "row_index": 14,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/11/07",
+      "healed_value": "2023-11-07 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.535",
+      "row_index": 16,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "31/01/2023",
+      "healed_value": "2023-01-31 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.535",
+      "row_index": 17,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Oct 20, 2023",
+      "healed_value": "2023-10-20 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.535",
+      "row_index": 18,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1693263600",
+      "healed_value": "2023-08-29 04:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.536",
+      "row_index": 19,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/10/02",
+      "healed_value": "2023-10-02 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.536",
+      "row_index": 21,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "25/07/2023",
+      "healed_value": "2023-07-25 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.536",
+      "row_index": 22,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Mar 21, 2023",
+      "healed_value": "2023-03-21 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.536",
+      "row_index": 23,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1695963600",
+      "healed_value": "2023-09-29 10:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.536",
+      "row_index": 24,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/05/07",
+      "healed_value": "2023-05-07 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.537",
+      "row_index": 26,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "17/09/2023",
+      "healed_value": "2023-09-17 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.537",
+      "row_index": 27,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Jun 04, 2023",
+      "healed_value": "2023-06-04 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.537",
+      "row_index": 28,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1696996800",
+      "healed_value": "2023-10-11 09:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.537",
+      "row_index": 29,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/01/27",
+      "healed_value": "2023-01-27 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.538",
+      "row_index": 31,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "09/08/2023",
+      "healed_value": "2023-08-09 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.538",
+      "row_index": 32,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Jul 28, 2023",
+      "healed_value": "2023-07-28 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.538",
+      "row_index": 33,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1702162800",
+      "healed_value": "2023-12-10 04:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.538",
+      "row_index": 34,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/08/24",
+      "healed_value": "2023-08-24 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.539",
+      "row_index": 36,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "20/01/2023",
+      "healed_value": "2023-01-20 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.539",
+      "row_index": 37,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Aug 12, 2023",
+      "healed_value": "2023-08-12 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.539",
+      "row_index": 38,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1678057200",
+      "healed_value": "2023-03-06 04:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.539",
+      "row_index": 39,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/08/04",
+      "healed_value": "2023-08-04 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.539",
+      "row_index": 41,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "28/03/2023",
+      "healed_value": "2023-03-28 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.540",
+      "row_index": 42,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Apr 12, 2023",
+      "healed_value": "2023-04-12 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.540",
+      "row_index": 43,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1689519600",
+      "healed_value": "2023-07-16 20:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.540",
+      "row_index": 44,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/03/04",
+      "healed_value": "2023-03-04 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.540",
+      "row_index": 46,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "06/09/2023",
+      "healed_value": "2023-09-06 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.541",
+      "row_index": 47,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Mar 12, 2023",
+      "healed_value": "2023-03-12 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.541",
+      "row_index": 48,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1681650000",
+      "healed_value": "2023-04-16 18:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.541",
+      "row_index": 49,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/08/03",
+      "healed_value": "2023-08-03 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.541",
+      "row_index": 51,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "31/10/2023",
+      "healed_value": "2023-10-31 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.541",
+      "row_index": 52,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Aug 21, 2023",
+      "healed_value": "2023-08-21 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.541",
+      "row_index": 53,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1674817200",
+      "healed_value": "2023-01-27 16:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.542",
+      "row_index": 54,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/03/06",
+      "healed_value": "2023-03-06 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.542",
+      "row_index": 56,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "12/04/2023",
+      "healed_value": "2023-04-12 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.542",
+      "row_index": 57,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Dec 05, 2023",
+      "healed_value": "2023-12-05 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.542",
+      "row_index": 58,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1692914400",
+      "healed_value": "2023-08-25 03:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.543",
+      "row_index": 59,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/05/06",
+      "healed_value": "2023-05-06 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.543",
+      "row_index": 61,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "28/07/2023",
+      "healed_value": "2023-07-28 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.543",
+      "row_index": 62,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Dec 21, 2023",
+      "healed_value": "2023-12-21 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.543",
+      "row_index": 63,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1684486800",
+      "healed_value": "2023-05-19 14:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.544",
+      "row_index": 64,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/09/05",
+      "healed_value": "2023-09-05 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.544",
+      "row_index": 66,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "09/09/2023",
+      "healed_value": "2023-09-09 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.544",
+      "row_index": 67,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Sep 02, 2023",
+      "healed_value": "2023-09-02 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.544",
+      "row_index": 68,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1683514800",
+      "healed_value": "2023-05-08 08:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.545",
+      "row_index": 69,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/08/08",
+      "healed_value": "2023-08-08 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.545",
+      "row_index": 71,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "28/05/2023",
+      "healed_value": "2023-05-28 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.545",
+      "row_index": 72,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Apr 26, 2023",
+      "healed_value": "2023-04-26 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.545",
+      "row_index": 73,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1697706000",
+      "healed_value": "2023-10-19 14:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.546",
+      "row_index": 74,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/01/21",
+      "healed_value": "2023-01-21 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.546",
+      "row_index": 76,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "09/09/2023",
+      "healed_value": "2023-09-09 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.546",
+      "row_index": 77,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "May 28, 2023",
+      "healed_value": "2023-05-28 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.546",
+      "row_index": 78,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1690387200",
+      "healed_value": "2023-07-26 21:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.547",
+      "row_index": 79,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/09/13",
+      "healed_value": "2023-09-13 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.547",
+      "row_index": 81,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "28/02/2023",
+      "healed_value": "2023-02-28 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.547",
+      "row_index": 82,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Aug 22, 2023",
+      "healed_value": "2023-08-22 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.547",
+      "row_index": 83,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1694937600",
+      "healed_value": "2023-09-17 13:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.548",
+      "row_index": 84,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/10/06",
+      "healed_value": "2023-10-06 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.548",
+      "row_index": 86,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "19/06/2023",
+      "healed_value": "2023-06-19 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.548",
+      "row_index": 87,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Feb 08, 2023",
+      "healed_value": "2023-02-08 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.548",
+      "row_index": 88,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1694106000",
+      "healed_value": "2023-09-07 22:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.551",
+      "row_index": 89,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/11/21",
+      "healed_value": "2023-11-21 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.552",
+      "row_index": 91,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "16/12/2023",
+      "healed_value": "2023-12-16 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.552",
+      "row_index": 92,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Aug 27, 2023",
+      "healed_value": "2023-08-27 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.552",
+      "row_index": 93,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1703059200",
+      "healed_value": "2023-12-20 13:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.553",
+      "row_index": 94,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/06/01",
+      "healed_value": "2023-06-01 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.554",
+      "row_index": 96,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "18/01/2023",
+      "healed_value": "2023-01-18 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.554",
+      "row_index": 97,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Oct 04, 2023",
+      "healed_value": "2023-10-04 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.554",
+      "row_index": 98,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1677592800",
+      "healed_value": "2023-02-28 19:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.554",
+      "row_index": 99,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/03/05",
+      "healed_value": "2023-03-05 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.555",
+      "row_index": 101,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "05/06/2023",
+      "healed_value": "2023-06-05 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.555",
+      "row_index": 102,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Mar 21, 2023",
+      "healed_value": "2023-03-21 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.555",
+      "row_index": 103,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1682938800",
+      "healed_value": "2023-05-01 16:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.555",
+      "row_index": 104,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/08/21",
+      "healed_value": "2023-08-21 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.556",
+      "row_index": 106,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "09/05/2023",
+      "healed_value": "2023-05-09 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.556",
+      "row_index": 107,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Mar 31, 2023",
+      "healed_value": "2023-03-31 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.556",
+      "row_index": 108,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1692547200",
+      "healed_value": "2023-08-20 21:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.556",
+      "row_index": 109,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/07/25",
+      "healed_value": "2023-07-25 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.557",
+      "row_index": 111,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "28/02/2023",
+      "healed_value": "2023-02-28 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.557",
+      "row_index": 112,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Jul 24, 2023",
+      "healed_value": "2023-07-24 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.557",
+      "row_index": 113,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1675476000",
+      "healed_value": "2023-02-04 07:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.558",
+      "row_index": 114,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/10/15",
+      "healed_value": "2023-10-15 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.558",
+      "row_index": 116,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "21/10/2023",
+      "healed_value": "2023-10-21 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.559",
+      "row_index": 117,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Jun 23, 2023",
+      "healed_value": "2023-06-23 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.559",
+      "row_index": 118,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "1682078400",
+      "healed_value": "2023-04-21 17:30:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.559",
+      "row_index": 119,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "2023/03/21",
+      "healed_value": "2023-03-21 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.560",
+      "row_index": 121,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "24/01/2023",
+      "healed_value": "2023-01-24 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    },
+    {
+      "timestamp": "12:47:59.560",
+      "row_index": 122,
+      "column": "transaction_date",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": "Jun 17, 2023",
+      "healed_value": "2023-06-17 00:00:00",
+      "strategy": "Standardized mixed timestamp to ISO format",
+      "confidence_score": 0.95
+    }
+  ]
+}

@@ -1,0 +1,2025 @@
+{
+  "dataset_name": "Clinical_Patient_Vitals",
+  "created_at": "2026-10-30T12:47:59.922145",
+  "total_healing_actions": 419,
+  "initial_health_score": 99.8,
+  "final_health_score": 99.9,
+  "score_improvement": 0.1,
+  "initial_grade": "A+",
+  "final_grade": "A+",
+  "issues_resolved_by_type": {
+    "MISSING_VALUE": 4,
+    "CORRUPT_TYPE": 400,
+    "TYPO_CORRECTED": 2,
+    "OUTLIER_BOUNDED": 13
+  },
+  "repairs_by_column": {
+    "cholesterol_mg_dl": 4,
+    "body_mass_index": 6,
+    "age_years": 401,
+    "clinical_assessment": 2,
+    "systolic_bp_mmhg": 6
+  },
+  "actions_sample": [
+    {
+      "timestamp": "12:47:59.965",
+      "row_index": 29,
+      "column": "cholesterol_mg_dl",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "-999",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.966",
+      "row_index": 15,
+      "column": "body_mass_index",
+      "issue_type": "MISSING_VALUE",
+      "original_value": "N/A",
+      "healed_value": null,
+      "strategy": "Converted masked sentinel string to standard NaN",
+      "confidence_score": 0.99
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 0,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 42,
+      "healed_value": 42.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 1,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 46,
+      "healed_value": 46.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 2,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 60,
+      "healed_value": 60.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 3,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 64,
+      "healed_value": 64.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 4,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 69,
+      "healed_value": 69.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 5,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 60,
+      "healed_value": 60.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 6,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 66,
+      "healed_value": 66.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 7,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 77,
+      "healed_value": 77.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 8,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 380,
+      "healed_value": 380.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 9,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 22,
+      "healed_value": 22.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 10,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 37,
+      "healed_value": 37.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 11,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 78,
+      "healed_value": 78.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 12,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 57,
+      "healed_value": 57.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 13,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 22,
+      "healed_value": 22.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 14,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 74,
+      "healed_value": 74.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 15,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 35,
+      "healed_value": 35.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 16,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 17,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 25,
+      "healed_value": 25.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 18,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 77,
+      "healed_value": 77.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 19,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 37,
+      "healed_value": 37.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 20,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 85,
+      "healed_value": 85.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 21,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 19,
+      "healed_value": 19.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 22,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 23,
+      "healed_value": 23.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 23,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 58,
+      "healed_value": 58.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 24,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 62,
+      "healed_value": 62.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 25,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 84,
+      "healed_value": 84.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 26,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 36,
+      "healed_value": 36.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 27,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 64,
+      "healed_value": 64.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 28,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 34,
+      "healed_value": 34.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 29,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 48,
+      "healed_value": 48.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 30,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 23,
+      "healed_value": 23.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 31,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 24,
+      "healed_value": 24.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 32,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 22,
+      "healed_value": 22.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 33,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 34,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 36,
+      "healed_value": 36.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.969",
+      "row_index": 35,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 52,
+      "healed_value": 52.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 36,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 37,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 31,
+      "healed_value": 31.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 38,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 30,
+      "healed_value": 30.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 39,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 42,
+      "healed_value": 42.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 40,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 84,
+      "healed_value": 84.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 41,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 85,
+      "healed_value": 85.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 42,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 34,
+      "healed_value": 34.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 43,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 44,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 29,
+      "healed_value": 29.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 45,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 85,
+      "healed_value": 85.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 46,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 48,
+      "healed_value": 48.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 47,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 60,
+      "healed_value": 60.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 48,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 48,
+      "healed_value": 48.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 49,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 80,
+      "healed_value": 80.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 50,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 42,
+      "healed_value": 42.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 51,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 66,
+      "healed_value": 66.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 52,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 65,
+      "healed_value": 65.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 53,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 56,
+      "healed_value": 56.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 54,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 79,
+      "healed_value": 79.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 55,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 66,
+      "healed_value": 66.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 56,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 31,
+      "healed_value": 31.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 57,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 52,
+      "healed_value": 52.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 58,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 54,
+      "healed_value": 54.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 59,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 47,
+      "healed_value": 47.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 60,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 24,
+      "healed_value": 24.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 61,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 76,
+      "healed_value": 76.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 62,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 64,
+      "healed_value": 64.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 63,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 30,
+      "healed_value": 30.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 64,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 25,
+      "healed_value": 25.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 65,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 27,
+      "healed_value": 27.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 66,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 83,
+      "healed_value": 83.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 67,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 31,
+      "healed_value": 31.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 68,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 38,
+      "healed_value": 38.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 69,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 49,
+      "healed_value": 49.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 70,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 42,
+      "healed_value": 42.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 71,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 79,
+      "healed_value": 79.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 72,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 41,
+      "healed_value": 41.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 73,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 27,
+      "healed_value": 27.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 74,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 18,
+      "healed_value": 18.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.970",
+      "row_index": 75,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 70,
+      "healed_value": 70.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 76,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 36,
+      "healed_value": 36.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 77,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 46,
+      "healed_value": 46.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 78,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 84,
+      "healed_value": 84.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 79,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 19,
+      "healed_value": 19.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 80,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 41,
+      "healed_value": 41.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 81,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 28,
+      "healed_value": 28.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 82,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 68,
+      "healed_value": 68.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 83,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 25,
+      "healed_value": 25.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 84,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 40,
+      "healed_value": 40.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 85,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 18,
+      "healed_value": 18.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 86,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 82,
+      "healed_value": 82.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 87,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 37,
+      "healed_value": 37.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 88,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 81,
+      "healed_value": 81.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 89,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 59,
+      "healed_value": 59.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 90,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 22,
+      "healed_value": 22.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 91,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 59,
+      "healed_value": 59.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 92,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 77,
+      "healed_value": 77.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 93,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 43,
+      "healed_value": 43.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 94,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 31,
+      "healed_value": 31.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 95,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 71,
+      "healed_value": 71.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 96,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 61,
+      "healed_value": 61.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 97,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 73,
+      "healed_value": 73.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 98,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 43,
+      "healed_value": 43.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 99,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 57,
+      "healed_value": 57.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 100,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 62,
+      "healed_value": 62.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 101,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 69,
+      "healed_value": 69.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 102,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 69,
+      "healed_value": 69.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 103,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 31,
+      "healed_value": 31.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 104,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 27,
+      "healed_value": 27.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 105,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 84,
+      "healed_value": 84.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 106,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 42,
+      "healed_value": 42.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 107,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 38,
+      "healed_value": 38.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 108,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 38,
+      "healed_value": 38.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 109,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 53,
+      "healed_value": 53.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 110,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 41,
+      "healed_value": 41.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 111,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 39,
+      "healed_value": 39.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 112,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 23,
+      "healed_value": 23.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 113,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 72,
+      "healed_value": 72.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 114,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 60,
+      "healed_value": 60.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.971",
+      "row_index": 115,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 76,
+      "healed_value": 76.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 116,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 50,
+      "healed_value": 50.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 117,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 118,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 25,
+      "healed_value": 25.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 119,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 57,
+      "healed_value": 57.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 120,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 33,
+      "healed_value": 33.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 121,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 122,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 64,
+      "healed_value": 64.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 123,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 41,
+      "healed_value": 41.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 124,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 22,
+      "healed_value": 22.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 125,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 68,
+      "healed_value": 68.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 126,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 25,
+      "healed_value": 25.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 127,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 32,
+      "healed_value": 32.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 128,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 61,
+      "healed_value": 61.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 129,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 41,
+      "healed_value": 41.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 130,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 50,
+      "healed_value": 50.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 131,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 22,
+      "healed_value": 22.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 132,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 55,
+      "healed_value": 55.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 133,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 49,
+      "healed_value": 49.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 134,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 61,
+      "healed_value": 61.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 135,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 85,
+      "healed_value": 85.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 136,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 40,
+      "healed_value": 40.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 137,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 22,
+      "healed_value": 22.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 138,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 45,
+      "healed_value": 45.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 139,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 77,
+      "healed_value": 77.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 140,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 68,
+      "healed_value": 68.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 141,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 31,
+      "healed_value": 31.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 142,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 18,
+      "healed_value": 18.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 143,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 51,
+      "healed_value": 51.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 144,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 46,
+      "healed_value": 46.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 145,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 53,
+      "healed_value": 53.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 146,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 61,
+      "healed_value": 61.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 147,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 49,
+      "healed_value": 49.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 148,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 30,
+      "healed_value": 30.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 149,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 80,
+      "healed_value": 80.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 150,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 33,
+      "healed_value": 33.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 151,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 71,
+      "healed_value": 71.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 152,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 57,
+      "healed_value": 57.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 153,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 59,
+      "healed_value": 59.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.972",
+      "row_index": 154,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 76,
+      "healed_value": 76.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 155,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 77,
+      "healed_value": 77.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 156,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 66,
+      "healed_value": 66.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 157,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 68,
+      "healed_value": 68.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 158,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 85,
+      "healed_value": 85.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 159,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 46,
+      "healed_value": 46.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 160,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 25,
+      "healed_value": 25.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 161,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 81,
+      "healed_value": 81.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 162,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 74,
+      "healed_value": 74.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 163,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 81,
+      "healed_value": 81.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 164,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 70,
+      "healed_value": 70.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 165,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 44,
+      "healed_value": 44.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 166,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 57,
+      "healed_value": 57.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 167,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 47,
+      "healed_value": 47.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 168,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 81,
+      "healed_value": 81.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 169,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 56,
+      "healed_value": 56.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 170,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 53,
+      "healed_value": 53.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 171,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 79,
+      "healed_value": 79.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 172,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 27,
+      "healed_value": 27.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 173,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 174,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 53,
+      "healed_value": 53.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 175,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 81,
+      "healed_value": 81.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 176,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 46,
+      "healed_value": 46.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 177,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 42,
+      "healed_value": 42.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 178,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 24,
+      "healed_value": 24.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 179,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 30,
+      "healed_value": 30.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 180,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 34,
+      "healed_value": 34.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 181,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 32,
+      "healed_value": 32.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 182,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 63,
+      "healed_value": 63.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 183,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 184,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 185,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 64,
+      "healed_value": 64.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 186,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 187,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 23,
+      "healed_value": 23.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 188,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 35,
+      "healed_value": 35.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 189,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 28,
+      "healed_value": 28.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 190,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 49,
+      "healed_value": 49.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 191,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 61,
+      "healed_value": 61.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 192,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 22,
+      "healed_value": 22.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 193,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 19,
+      "healed_value": 19.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.973",
+      "row_index": 194,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 49,
+      "healed_value": 49.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.974",
+      "row_index": 195,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 47,
+      "healed_value": 47.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.974",
+      "row_index": 196,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 19,
+      "healed_value": 19.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    },
+    {
+      "timestamp": "12:47:59.974",
+      "row_index": 197,
+      "column": "age_years",
+      "issue_type": "CORRUPT_TYPE",
+      "original_value": 75,
+      "healed_value": 75.0,
+      "strategy": "Parsed currency/percent/dirty string to float",
+      "confidence_score": 0.98
+    }
+  ]
+}
