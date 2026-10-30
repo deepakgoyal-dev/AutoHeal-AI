@@ -11,6 +11,12 @@
 **[https://deepakgoyal-dev.github.io/AutoHeal-AI/](https://deepakgoyal-dev.github.io/AutoHeal-AI/)**  
 *(Drag and drop any messy CSV to watch our client-side engine repair and visualize it in real time!)*
 
+> [!TIP]
+> **For Evaluators & Reviewers (3 Ways to Open the Web Application):**
+> 1. **Live Public Web:** Visit **[https://deepakgoyal-dev.github.io/AutoHeal-AI/](https://deepakgoyal-dev.github.io/AutoHeal-AI/)**
+> 2. **Direct Browser Execution (Zero Setup):** Open **[`index.html`](index.html)** directly in Chrome, Edge, or Safari — the entire UI, chart rendering, and simulation engine are self-contained without needing a web server or dependencies.
+> 3. **Local Server:** Double-click **`start.bat`** (or execute `python server.py --port 8000`) and visit **[http://localhost:8000](http://localhost:8000)**.
+
 ---
 
 ## 👥 The Team & Individual Contributions
