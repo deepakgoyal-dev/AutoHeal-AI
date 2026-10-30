@@ -6,9 +6,16 @@
 
 **AutoHeal AI** is a zero-human-intervention autonomous data pipeline and interactive analytics web application. It ingests degraded, corrupted real-world data, autonomously detects anomalies across 6 vectors, executes 7 multi-pass self-healing repairs, calculates a Data Health Score ($0$ to $100$), and generates instant visual analytics with plain-English executive briefings.
 
-👉 **Try the Live Web App in Your Browser:**  
-**[https://deepakgoyal-dev.github.io/AutoHeal-AI/](https://deepakgoyal-dev.github.io/AutoHeal-AI/)**  
-*(Drag and drop any raw CSV file to watch it self-heal and visualize instantly!)*
+---
+
+## 👥 Project Team & Contributions
+
+| Role | Name | GitHub Profile |
+| :--- | :--- | :--- |
+| **Team Lead** | **Deepak** | [@deepakgoyal-dev](https://github.com/deepakgoyal-dev) |
+| **Team Member** | **Rudra** | Contributor |
+| **Team Member** | **Nikhil** | Contributor |
+| **Team Member** | **Riddhi Garg** | Contributor |
 
 ---
 
@@ -48,28 +55,37 @@ flowchart TD
 
 ---
 
-## 🌐 Running on the Web
+## 🌐 How to Run on the Web
 
-### Option A: 100% Client-Side Web App (GitHub Pages)
-Visit the deployed application at **[https://deepakgoyal-dev.github.io/AutoHeal-AI/](https://deepakgoyal-dev.github.io/AutoHeal-AI/)**.
-- **Zero Installation Required**: Runs directly in Chrome, Edge, Safari, or Firefox.
-- **Drag-and-Drop Ingestion**: Drop any messy CSV into the browser window.
-- **Client-Side Self-Healing**: Detects sentinels, parses currency strings, bounds outliers via IQR, and calculates before/after health deltas right in your browser.
-- **Interactive Visualizations**: Canvas-based distribution histograms, correlation heatmaps, side-by-side diff inspectors, and searchable audit ledgers.
+### Option 1: Live Public Web App (GitHub Pages)
+
+The repository includes a ready-to-use client-side application in `index.html`. To make it accessible worldwide:
+
+1. Open your repository on GitHub: **[https://github.com/deepakgoyal-dev/AutoHeal-AI](https://github.com/deepakgoyal-dev/AutoHeal-AI)**
+2. Click **Settings** $\rightarrow$ **Pages** (on the left menu).
+3. Under **Build and deployment $\rightarrow$ Branch**:
+   - Select **`main`**
+   - Select folder **`/(root)`**
+   - Click **Save**.
+4. Within 30 to 60 seconds, your site will be live at:
+   👉 **[https://deepakgoyal-dev.github.io/AutoHeal-AI/](https://deepakgoyal-dev.github.io/AutoHeal-AI/)**
+
+Visitors can drag and drop any CSV file into their browser to see it autonomously repaired with live charts, diff inspectors, and plain-English summaries.
 
 ---
 
-### Option B: Local Web Server with Python Backend
-Run the high-performance local server:
+### Option 2: Local Web Server
+
+Run the Python server locally:
 ```bash
 python server.py --port 8000
 ```
-Open **[http://localhost:8000](http://localhost:8000)** in your browser for local batch and REST API processing.
+Open **[http://localhost:8000](http://localhost:8000)** in any browser.
 
 ---
 
-### Option C: Cloud Container Deployment (Docker / Render / Railway)
-Build and run the Docker container:
+### Option 3: Docker & Cloud Deployment
+
 ```bash
 docker build -t autoheal-ai .
 docker run -p 8000:8000 autoheal-ai
@@ -77,26 +93,19 @@ docker run -p 8000:8000 autoheal-ai
 
 ---
 
-## 💻 CLI & Autonomous Background Watcher
+## 💻 CLI & Autonomous Watcher
 
-### 1. Run Autonomous Demonstration
 ```bash
+# Run demonstration on enterprise datasets
 python run_pipeline.py --demo all --rows 500
-```
 
-### 2. Process Custom File
-```bash
-python run_pipeline.py --input path/to/corrupted_data.csv
-```
+# Heal custom CSV/JSON file
+python run_pipeline.py --input path/to/dirty_data.csv
 
-### 3. Continuous Background Watcher Mode
-Watches `data/incoming/` continuously and self-heals files the moment they are dropped:
-```bash
+# Run continuous folder watcher (heals files the instant they are dropped in)
 python run_pipeline.py --watch
-```
 
-### 4. Run Unit Test Suite
-```bash
+# Run unit tests
 python -m unittest test_aegis.py
 ```
 
@@ -117,4 +126,4 @@ python -m unittest test_aegis.py
 ---
 
 ## 📜 License
-MIT License. Created by [Deepak Goyal](https://github.com/deepakgoyal-dev).
+MIT License. Created by **Team Lead: Deepak** and **Members: Rudra, Nikhil, Riddhi Garg**.

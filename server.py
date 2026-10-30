@@ -65,11 +65,17 @@ class AegisWebHandler(BaseHTTPRequestHandler):
             self.wfile.write(b"Not Found")
 
     def _serve_portal(self):
-        """Serves the primary interactive AegisData web application."""
-        # Find latest generated report dashboard or generate a demo if none exists
+        """Serves the primary interactive AutoHeal AI web application."""
+        index_file = BASE_DIR / "index.html"
+        if index_file.exists():
+            with open(index_file, "r", encoding="utf-8") as f:
+                html = f.read()
+            self._set_headers(200, "text/html")
+            self.wfile.write(html.encode("utf-8"))
+            return
+
         report_files = list(CONFIG.reports_dir.glob("*_dashboard.html"))
         if not report_files:
-            print("[Server] Generating initial enterprise demo dataset...")
             demo_df = CorruptedDataGenerator.generate_ecommerce_dataset(n_rows=300)
             PIPELINE.process(demo_df, dataset_name="Ecommerce_Transactions_Demo")
             report_files = list(CONFIG.reports_dir.glob("*_dashboard.html"))
