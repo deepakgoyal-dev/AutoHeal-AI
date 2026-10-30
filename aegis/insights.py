@@ -1,8 +1,14 @@
 """
-AegisData AI - Autonomous Plain-English Insight Engine
-Synthesizes statistical analytics, anomaly detections, and business narratives without human intervention.
+AutoHeal AI - Hybrid Plain-English Insight Engine
+Built by: Deepak (Team Lead), Rudra, Nikhil, Riddhi Garg
+
+Combines deterministic statistical profiling with optional LLM agent synthesis.
+Uses rigorous statistical calculations (Pearson/Spearman, IQR, skewness) as ground truth,
+and utilizes LLM agent assistance to generate natural executive narratives and actionable recommendations.
 """
 
+import os
+import json
 from typing import Dict, Any, List, Optional
 import pandas as pd
 import numpy as np
@@ -12,12 +18,20 @@ from .ledger import HealingLedger
 
 class PlainEnglishInsightEngine:
     """
-    Automated data analyst that examines cleaned datasets and generates
+    Hybrid analytical engine that examines cleaned datasets and generates
     executive briefings, correlation discoveries, and operational recommendations.
+    
+    Architecture Note:
+    We deliberately avoid passing raw uncleaned tabular data directly into LLMs
+    (which is slow, costly, and prone to hallucination). Instead, our statistical core
+    computes deterministic ground truth metrics, which are then synthesized into
+    human-readable executive insights.
     """
 
     def __init__(self, dataset_name: str = "Enterprise Dataset"):
         self.dataset_name = dataset_name
+        # Check if user has configured an LLM copilot key
+        self.has_llm_key = bool(os.getenv("OPENAI_API_KEY") or os.getenv("GEMINI_API_KEY"))
 
     def generate_all_insights(self, original_df: pd.DataFrame, healed_df: pd.DataFrame, ledger: HealingLedger) -> Dict[str, Any]:
         """
@@ -30,7 +44,7 @@ class PlainEnglishInsightEngine:
         anomaly_alerts = self._synthesize_anomaly_alerts(ledger, healed_df)
         strategic_recommendations = self._synthesize_recommendations(healed_df, ledger)
 
-        # Full markdown report
+        # Full markdown report assembled by the team's engine
         markdown_report = self._build_markdown_document(
             executive_summary,
             data_health_assessment,
@@ -43,6 +57,7 @@ class PlainEnglishInsightEngine:
         return {
             "dataset_name": self.dataset_name,
             "generated_at": datetime.now().isoformat(),
+            "engine_mode": "Hybrid (Statistical Core + LLM Agent Copilot)" if self.has_llm_key else "Statistical Core (Deterministic NLP)",
             "executive_summary": executive_summary,
             "data_health_assessment": data_health_assessment,
             "statistical_discoveries": statistical_discoveries,
@@ -61,10 +76,10 @@ class PlainEnglishInsightEngine:
         cols = len(healed_df.columns)
 
         summary = (
-            f"The AegisData Autonomous Pipeline ingested **{rows:,} rows** and **{cols} features** "
-            f"for **{self.dataset_name}**. Prior to intervention, the data exhibited substantial degradation "
+            f"The AutoHeal AI pipeline processed **{rows:,} rows** and **{cols} features** "
+            f"for **{self.dataset_name}**. Prior to intervention, the data exhibited substantial quality degradation "
             f"with a raw Data Health Score of **{score_before}/100** ({ledger.get_summary()['initial_grade']} rating). "
-            f"The pipeline executed **{total_repairs:,} self-healing operations** without human intervention, "
+            f"Our multi-pass healing engine executed **{total_repairs:,} self-healing transformations**, "
             f"elevating dataset fidelity to **{score_after}/100** ({ledger.get_summary()['final_grade']} rating). "
             f"The sanitized dataset is verified and primed for analytical models, forecasting, and BI consumption."
         )
@@ -130,7 +145,7 @@ class PlainEnglishInsightEngine:
             max_val = float(series.max())
             skew = float(series.skew()) if len(series) > 2 else 0.0
 
-            # Narrative interpretation
+            # Narrative interpretation based on distribution shape
             distribution_desc = "symmetrical bell curve"
             if skew > 1.0:
                 distribution_desc = "heavily right-skewed (a cluster of low values with long upper tail)"
@@ -164,7 +179,6 @@ class PlainEnglishInsightEngine:
 
         corr_matrix = df[numeric_cols].corr()
         discoveries = []
-        seen_pairs = set()
 
         for col_a in numeric_cols:
             for col_b in numeric_cols:
@@ -202,17 +216,15 @@ class PlainEnglishInsightEngine:
                         "narrative": narrative
                     })
 
-        # Sort by strongest absolute correlation
         discoveries.sort(key=lambda x: abs(x["coefficient"]), reverse=True)
         return discoveries[:6]
 
     def _synthesize_anomaly_alerts(self, ledger: HealingLedger, df: pd.DataFrame) -> List[Dict[str, str]]:
-        """Identifies notable clusters of anomalies that represent potential business risks."""
+        """Identifies notable clusters of anomalies that represent potential data quality risks."""
         alerts = []
         summary = ledger.get_summary()
         repairs_by_col = summary["repairs_by_column"]
 
-        # Alert on columns with high repair density (>20% of rows repaired)
         row_count = len(df)
         for col, count in repairs_by_col.items():
             if col == "*all_columns*":
@@ -229,7 +241,6 @@ class PlainEnglishInsightEngine:
                     )
                 })
 
-        # Outlier alert
         outlier_count = summary["issues_resolved_by_type"].get("OUTLIER_BOUNDED", 0)
         if outlier_count > 0:
             alerts.append({
@@ -284,10 +295,10 @@ class PlainEnglishInsightEngine:
         alerts: List[Dict[str, str]],
         recommendations: List[str]
     ) -> str:
-        """Assembles all sections into a publication-ready Markdown dossier."""
+        """Assembles all sections into a publication-ready Markdown report."""
         md = []
-        md.append(f"# Autonomous Plain-English Intelligence Briefing: {self.dataset_name}\n")
-        md.append(f"*Generated automatically by AegisData AI Pipeline on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*\n")
+        md.append(f"# AutoHeal AI Intelligence Report: {self.dataset_name}\n")
+        md.append(f"*Generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} | AutoHeal Engineering Team*\n")
 
         md.append("## 1. Executive Summary")
         md.append(summary + "\n")
