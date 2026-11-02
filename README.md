@@ -45,7 +45,7 @@ Real-world datasets rarely arrive in pristine condition. They are plagued by:
 
 We wanted to build an automated pipeline that takes in raw, messy datasets and produces production-ready clean tables along with executive-ready analytics in seconds.
 
----
+--
 
 ## 🧠 Our Architectural Philosophy: A Hybrid Approach
 
