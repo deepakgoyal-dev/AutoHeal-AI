@@ -14,7 +14,7 @@ from urllib.parse import urlparse, parse_qs
 from pathlib import Path
 import pandas as pd
 
-from aegis import AutoHealPipeline, CorruptedDataGenerator, PipelineConfig
+from detector import AutoHealPipeline, CorruptedDataGenerator, PipelineConfig
 
 BASE_DIR = Path(__file__).resolve().parent
 CONFIG = PipelineConfig()

@@ -7,7 +7,7 @@ Execute autonomous self-healing, visual dashboard creation, and plain-English in
 import sys
 import argparse
 from pathlib import Path
-from aegis import AutoHealPipeline, CorruptedDataGenerator, PipelineConfig
+from detector import AutoHealPipeline, CorruptedDataGenerator, PipelineConfig
 
 
 def main():

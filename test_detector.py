@@ -9,7 +9,7 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 
-from aegis import (
+from detector import (
     AutoHealPipeline,
     PipelineConfig,
     CorruptionDetector,

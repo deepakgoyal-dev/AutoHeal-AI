@@ -169,7 +169,7 @@ Open **[http://localhost:8000](http://localhost:8000)** in your browser.
 
 ### 6. Run Unit Tests
 ```bash
-python -m unittest test_aegis.py
+python -m unittest test_detector.py
 ```
 
 ---
@@ -192,7 +192,7 @@ Our repository is pre-configured with a standalone client-side web application i
 
 ```
 AutoHeal-AI/
-├── aegis/                          # Core Python Engine
+├── detector/                          # Core Python Engine
 │   ├── __init__.py                 # Package exports
 │   ├── config.py                   # Thresholds, sentinels, and strategies
 │   ├── detector.py                 # Multi-vector anomaly & corruption detector
@@ -208,7 +208,8 @@ AutoHeal-AI/
 ├── index.html                      # Standalone web app (runs in browser / GitHub Pages)
 ├── server.py                       # Lightweight Python HTTP server & REST API
 ├── run_pipeline.py                 # CLI runner (--demo, --input, --watch)
-├── test_aegis.py                   # Comprehensive unit test suite
+├── test_detector.py                # Comprehensive unit test suite
+├── aegis.py                        # Backward compatibility alias
 ├── Dockerfile                      # Container configuration
 ├── requirements.txt                # Python dependencies
 └── README.md                       # Project documentation
