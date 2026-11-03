@@ -1,0 +1,209 @@
+{
+  "initial_columns": 11,
+  "final_columns": 28,
+  "engineered_features_count": 9,
+  "engineering_log": [
+    {
+      "source_feature": "transaction_date",
+      "engineered_features": [
+        "transaction_date_year",
+        "transaction_date_month",
+        "transaction_date_day",
+        "transaction_date_dayofweek",
+        "transaction_date_is_weekend",
+        "transaction_date_month_sin",
+        "transaction_date_month_cos",
+        "transaction_date_dow_sin",
+        "transaction_date_dow_cos"
+      ],
+      "type": "TEMPORAL_CYCLICAL",
+      "bias_mitigation": "Eliminates calendar boundary discontinuity (e.g. Sunday to Monday, Dec to Jan)"
+    },
+    {
+      "source_feature": "product_category",
+      "engineered_features": [
+        "product_category_balanced"
+      ],
+      "type": "REPRESENTATION_BALANCED",
+      "bias_mitigation": "Consolidated 1 rare categories (<2.5%) into 'Other' to prevent class frequency bias"
+    },
+    {
+      "source_feature": "sales_region",
+      "engineered_features": [
+        "sales_region_balanced"
+      ],
+      "type": "REPRESENTATION_BALANCED",
+      "bias_mitigation": "Consolidated 1 rare categories (<2.5%) into 'Other' to prevent class frequency bias"
+    },
+    {
+      "source_feature": "unit_price",
+      "engineered_features": [
+        "unit_price_log1p"
+      ],
+      "type": "VARIANCE_STABILIZATION",
+      "bias_mitigation": "Applied log1p transform (skewness=1.05) to stabilize gradient variance in downstream estimators"
+    },
+    {
+      "source_feature": "transaction_date_is_weekend",
+      "engineered_features": [
+        "transaction_date_is_weekend_log1p"
+      ],
+      "type": "VARIANCE_STABILIZATION",
+      "bias_mitigation": "Applied log1p transform (skewness=1.05) to stabilize gradient variance in downstream estimators"
+    },
+    {
+      "source_feature": "unit_price * unit_price",
+      "engineered_features": [
+        "interaction_unit_price_x_unit_price"
+      ],
+      "type": "DOMAIN_INTERACTION",
+      "bias_mitigation": "Explicit interaction product prevents linear models from underestimating compounding volume-price effects"
+    },
+    {
+      "source_feature": "unit_price * quantity_ordered",
+      "engineered_features": [
+        "interaction_unit_price_x_quantity_ordered"
+      ],
+      "type": "DOMAIN_INTERACTION",
+      "bias_mitigation": "Explicit interaction product prevents linear models from underestimating compounding volume-price effects"
+    },
+    {
+      "source_feature": "discount_rate * unit_price",
+      "engineered_features": [
+        "interaction_discount_rate_x_unit_price"
+      ],
+      "type": "DOMAIN_INTERACTION",
+      "bias_mitigation": "Explicit interaction product prevents linear models from underestimating compounding volume-price effects"
+    },
+    {
+      "source_feature": "discount_rate * quantity_ordered",
+      "engineered_features": [
+        "interaction_discount_rate_x_quantity_ordered"
+      ],
+      "type": "DOMAIN_INTERACTION",
+      "bias_mitigation": "Explicit interaction product prevents linear models from underestimating compounding volume-price effects"
+    }
+  ],
+  "robust_scaling_metadata": {
+    "unit_price": {
+      "median": 184.66,
+      "iqr": 240.592,
+      "q1": 90.925,
+      "q3": 331.517
+    },
+    "quantity_ordered": {
+      "median": 3.0,
+      "iqr": 2.0,
+      "q1": 2.0,
+      "q3": 4.0
+    },
+    "discount_rate": {
+      "median": 14.4,
+      "iqr": 13.05,
+      "q1": 8.1,
+      "q3": 21.15
+    },
+    "shipping_days": {
+      "median": 4.5,
+      "iqr": 3.0,
+      "q1": 3.0,
+      "q3": 6.0
+    },
+    "customer_rating": {
+      "median": 4.0,
+      "iqr": 1.0,
+      "q1": 3.5,
+      "q3": 4.5
+    },
+    "transaction_date_year": {
+      "median": 2023.0,
+      "iqr": 1.0,
+      "q1": 2023.0,
+      "q3": 2023.0
+    },
+    "transaction_date_month": {
+      "median": 7.0,
+      "iqr": 5.0,
+      "q1": 4.0,
+      "q3": 9.0
+    },
+    "transaction_date_day": {
+      "median": 16.5,
+      "iqr": 15.0,
+      "q1": 9.0,
+      "q3": 24.0
+    },
+    "transaction_date_dayofweek": {
+      "median": 3.0,
+      "iqr": 4.0,
+      "q1": 1.0,
+      "q3": 5.0
+    },
+    "transaction_date_is_weekend": {
+      "median": 0.0,
+      "iqr": 1.0,
+      "q1": 0.0,
+      "q3": 1.0
+    },
+    "transaction_date_month_sin": {
+      "median": 0.0,
+      "iqr": 1.732,
+      "q1": -0.866,
+      "q3": 0.866
+    },
+    "transaction_date_month_cos": {
+      "median": 0.0,
+      "iqr": 1.366,
+      "q1": -0.866,
+      "q3": 0.5
+    },
+    "transaction_date_dow_sin": {
+      "median": 0.0,
+      "iqr": 1.564,
+      "q1": -0.782,
+      "q3": 0.782
+    },
+    "transaction_date_dow_cos": {
+      "median": -0.223,
+      "iqr": 1.525,
+      "q1": -0.901,
+      "q3": 0.624
+    },
+    "unit_price_log1p": {
+      "median": 5.224,
+      "iqr": 1.286,
+      "q1": 4.521,
+      "q3": 5.807
+    },
+    "transaction_date_is_weekend_log1p": {
+      "median": 0.0,
+      "iqr": 0.693,
+      "q1": 0.0,
+      "q3": 0.693
+    },
+    "interaction_unit_price_x_unit_price": {
+      "median": 34099.405,
+      "iqr": 101635.7,
+      "q1": 8269.298,
+      "q3": 109904.997
+    },
+    "interaction_unit_price_x_quantity_ordered": {
+      "median": 523.62,
+      "iqr": 713.038,
+      "q1": 232.712,
+      "q3": 945.75
+    },
+    "interaction_discount_rate_x_unit_price": {
+      "median": 2232.085,
+      "iqr": 3983.76,
+      "q1": 915.65,
+      "q3": 4899.41
+    },
+    "interaction_discount_rate_x_quantity_ordered": {
+      "median": 34.65,
+      "iqr": 49.85,
+      "q1": 15.575,
+      "q3": 65.425
+    }
+  }
+}

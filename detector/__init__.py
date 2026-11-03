@@ -10,6 +10,8 @@ from .insights import PlainEnglishInsightEngine
 from .visualizer import VisualAnalyticsGenerator
 from .pipeline import AutoHealPipeline
 from .mock_data import CorruptedDataGenerator
+from .eda import ExploratoryDataAnalyzer
+from .features import FeatureEngineer
 
 __all__ = [
     "PipelineConfig",
@@ -20,7 +22,9 @@ __all__ = [
     "PlainEnglishInsightEngine",
     "VisualAnalyticsGenerator",
     "AutoHealPipeline",
-    "CorruptedDataGenerator"
+    "CorruptedDataGenerator",
+    "ExploratoryDataAnalyzer",
+    "FeatureEngineer"
 ]
 
 # Backward compatibility alias

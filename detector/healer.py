@@ -41,6 +41,10 @@ class SelfHealingEngine:
         # Pass 2: Sentinel Null Clearing
         working_df = self._heal_sentinel_nulls(working_df)
 
+
+        # Pass 2.5: High Missingness Column Removal (>90% threshold)
+        working_df = self._drop_high_missing_columns(working_df)
+
         # Pass 3: Type Coercion & Formatting Repair
         working_df = self._heal_types_and_formats(working_df)
 
@@ -62,28 +66,64 @@ class SelfHealingEngine:
         return working_df, self.ledger
 
     def _heal_headers(self, df: pd.DataFrame) -> pd.DataFrame:
-        """Stabilizes column headers: removes whitespace, unifies snake_case."""
-        renamed = {}
+        """Stabilizes column headers: removes whitespace, unifies snake_case, and resolves collisions."""
+        new_columns = []
+        seen = {}
         for idx, col in enumerate(df.columns):
             col_str = str(col).strip()
             clean = re.sub(r'[^a-zA-Z0-9_]', '_', col_str.lower())
             clean = re.sub(r'_+', '_', clean).strip('_')
             if not clean:
                 clean = f"column_{idx}"
-            if col_str != clean:
-                renamed[col] = clean
+            
+            # Resolve potential collision
+            if clean in seen:
+                seen[clean] += 1
+                unique_col = f"{clean}_{seen[clean]}"
+            else:
+                seen[clean] = 1
+                unique_col = clean
+
+            new_columns.append(unique_col)
+            if col_str != unique_col:
                 self.ledger.record_action(
                     row_index=-1,
                     column=str(col),
                     issue_type="SCHEMA_FIXED",
                     original_value=str(col),
-                    healed_value=clean,
-                    strategy="Header whitespace & syntax normalization",
+                    healed_value=unique_col,
+                    strategy="Header whitespace normalization & collision disambiguation",
                     confidence_score=1.0
                 )
 
-        if renamed:
-            df = df.rename(columns=renamed)
+        df.columns = new_columns
+        return df
+
+    def _drop_high_missing_columns(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Drops columns whose missingness ratio exceeds max_missing_drop_threshold (default: 0.90)."""
+        if len(df) == 0:
+            return df
+        
+        cols_to_drop = []
+        for col in df.columns:
+            null_count = int(df[col].isna().sum())
+            ratio = null_count / len(df)
+            if ratio >= self.config.max_missing_drop_threshold:
+                cols_to_drop.append((col, null_count, ratio))
+                
+        for col, count, ratio in cols_to_drop:
+            self.ledger.record_action(
+                row_index=-1,
+                column=col,
+                issue_type="COLUMN_DROPPED",
+                original_value=f"{count}/{len(df)} missing ({ratio*100:.1f}%)",
+                healed_value="*dropped*",
+                strategy=f"Dropped column exceeding {self.config.max_missing_drop_threshold*100:.0f}% missingness threshold",
+                confidence_score=1.0
+            )
+            
+        if cols_to_drop:
+            df = df.drop(columns=[c[0] for c in cols_to_drop])
         return df
 
     def _heal_sentinel_nulls(self, df: pd.DataFrame) -> pd.DataFrame:

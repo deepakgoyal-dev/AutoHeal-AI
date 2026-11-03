@@ -19,6 +19,8 @@ from detector import (
     VisualAnalyticsGenerator,
     AutoHealPipeline,
     CorruptedDataGenerator,
+    ExploratoryDataAnalyzer,
+    FeatureEngineer,
     AegisPipeline
 )
 
@@ -32,5 +34,7 @@ __all__ = [
     "VisualAnalyticsGenerator",
     "AutoHealPipeline",
     "CorruptedDataGenerator",
+    "ExploratoryDataAnalyzer",
+    "FeatureEngineer",
     "AegisPipeline"
 ]

@@ -1,0 +1,249 @@
+{
+  "summary": {
+    "total_rows": 400,
+    "total_columns": 11,
+    "numeric_features": 3,
+    "categorical_features": 6,
+    "temporal_features": 1,
+    "high_cardinality_features": 1
+  },
+  "dispatch_plan": {
+    "numeric": [
+      "unit_price",
+      "discount_rate",
+      "customer_rating"
+    ],
+    "categorical": [
+      "customer_id",
+      "product_category",
+      "sales_region",
+      "quantity_ordered",
+      "shipping_days",
+      "payment_method"
+    ],
+    "temporal": [
+      "transaction_date"
+    ],
+    "binary": [],
+    "identifiers": [
+      "order_id"
+    ]
+  },
+  "univariate": {
+    "numerical_profiles": {
+      "unit_price": {
+        "mean": 260.866,
+        "median": 184.66,
+        "std": 224.328,
+        "variance": 50323.09,
+        "iqr": 240.592,
+        "min": 15.36,
+        "max": 698.95,
+        "skewness": 1.047,
+        "excess_kurtosis": -0.252,
+        "coeff_variation": 0.86,
+        "distribution_classification": "Right-Skewed (Long Upper Tail)"
+      },
+      "discount_rate": {
+        "mean": 14.811,
+        "median": 14.4,
+        "std": 8.222,
+        "variance": 67.601,
+        "iqr": 13.05,
+        "min": 0.1,
+        "max": 30.0,
+        "skewness": 0.155,
+        "excess_kurtosis": -0.998,
+        "coeff_variation": 0.555,
+        "distribution_classification": "Gaussian / Approximately Symmetric"
+      },
+      "customer_rating": {
+        "mean": 3.991,
+        "median": 4.0,
+        "std": 0.58,
+        "variance": 0.336,
+        "iqr": 1.0,
+        "min": 3.0,
+        "max": 5.0,
+        "skewness": -0.01,
+        "excess_kurtosis": -1.139,
+        "coeff_variation": 0.145,
+        "distribution_classification": "Platykurtic (Uniform / Flat)"
+      }
+    },
+    "categorical_profiles": {
+      "customer_id": {
+        "cardinality": 225,
+        "mode": "CUST-104",
+        "mode_frequency_pct": 1.25,
+        "shannon_entropy": 7.63,
+        "normalized_entropy": 0.977,
+        "class_imbalance_ratio": 5.0,
+        "top_categories": {
+          "CUST-104": 5,
+          "CUST-219": 5,
+          "CUST-173": 5,
+          "CUST-350": 4,
+          "CUST-101": 4
+        }
+      },
+      "product_category": {
+        "cardinality": 6,
+        "mode": "Electronics",
+        "mode_frequency_pct": 24.0,
+        "shannon_entropy": 2.414,
+        "normalized_entropy": 0.934,
+        "class_imbalance_ratio": 10.67,
+        "top_categories": {
+          "Electronics": 96,
+          "Sports & Outdoors": 81,
+          "Home & Kitchen": 75,
+          "Beauty & Care": 72,
+          "Apparel": 67
+        }
+      },
+      "sales_region": {
+        "cardinality": 5,
+        "mode": "North America",
+        "mode_frequency_pct": 28.25,
+        "shannon_entropy": 2.061,
+        "normalized_entropy": 0.888,
+        "class_imbalance_ratio": 22.6,
+        "top_categories": {
+          "North America": 113,
+          "Asia Pacific": 108,
+          "Latin America": 89,
+          "Europe": 85,
+          "N. America": 5
+        }
+      },
+      "quantity_ordered": {
+        "cardinality": 7,
+        "mode": "4.0",
+        "mode_frequency_pct": 20.5,
+        "shannon_entropy": 2.579,
+        "normalized_entropy": 0.919,
+        "class_imbalance_ratio": 11.71,
+        "top_categories": {
+          "4.0": 82,
+          "1.0": 80,
+          "2.0": 80,
+          "3.0": 75,
+          "5.0": 52
+        }
+      },
+      "shipping_days": {
+        "cardinality": 8,
+        "mode": "7.0",
+        "mode_frequency_pct": 16.75,
+        "shannon_entropy": 2.851,
+        "normalized_entropy": 0.95,
+        "class_imbalance_ratio": 13.4,
+        "top_categories": {
+          "7.0": 67,
+          "5.0": 64,
+          "6.0": 64,
+          "4.0": 60,
+          "2.0": 50
+        }
+      },
+      "payment_method": {
+        "cardinality": 4,
+        "mode": "Apple Pay",
+        "mode_frequency_pct": 26.75,
+        "shannon_entropy": 1.999,
+        "normalized_entropy": 0.999,
+        "class_imbalance_ratio": 1.11,
+        "top_categories": {
+          "Apple Pay": 107,
+          "Credit Card": 100,
+          "PayPal": 97,
+          "Bank Wire": 96
+        }
+      }
+    }
+  },
+  "bivariate": {
+    "numeric_correlations": [
+      {
+        "feature_x": "discount_rate",
+        "feature_y": "customer_rating",
+        "pearson_r": 0.096,
+        "spearman_rho": 0.092,
+        "relationship_type": "Weak / Independent"
+      },
+      {
+        "feature_x": "unit_price",
+        "feature_y": "customer_rating",
+        "pearson_r": -0.075,
+        "spearman_rho": -0.036,
+        "relationship_type": "Weak / Independent"
+      },
+      {
+        "feature_x": "unit_price",
+        "feature_y": "discount_rate",
+        "pearson_r": -0.024,
+        "spearman_rho": -0.053,
+        "relationship_type": "Weak / Independent"
+      }
+    ],
+    "numeric_categorical_effects": [
+      {
+        "numeric_feature": "unit_price",
+        "categorical_feature": "product_category",
+        "eta_squared": 0.679,
+        "effect_size": "Large"
+      },
+      {
+        "numeric_feature": "discount_rate",
+        "categorical_feature": "customer_id",
+        "eta_squared": 0.142,
+        "effect_size": "Moderate"
+      },
+      {
+        "numeric_feature": "customer_rating",
+        "categorical_feature": "customer_id",
+        "eta_squared": 0.118,
+        "effect_size": "Moderate"
+      },
+      {
+        "numeric_feature": "unit_price",
+        "categorical_feature": "quantity_ordered",
+        "eta_squared": 0.107,
+        "effect_size": "Moderate"
+      }
+    ],
+    "categorical_associations": [
+      {
+        "feature_a": "customer_id",
+        "feature_b": "quantity_ordered",
+        "cramers_v": 0.762,
+        "association_strength": "Strong"
+      },
+      {
+        "feature_a": "customer_id",
+        "feature_b": "product_category",
+        "cramers_v": 0.754,
+        "association_strength": "Strong"
+      },
+      {
+        "feature_a": "customer_id",
+        "feature_b": "sales_region",
+        "cramers_v": 0.728,
+        "association_strength": "Strong"
+      },
+      {
+        "feature_a": "product_category",
+        "feature_b": "quantity_ordered",
+        "cramers_v": 0.299,
+        "association_strength": "Moderate"
+      }
+    ]
+  },
+  "multivariate": {
+    "multicollinearity_warnings": [],
+    "total_dimensions": 3,
+    "effective_dimensions_for_90pct_variance": 3,
+    "redundancy_ratio": 0.0
+  }
+}

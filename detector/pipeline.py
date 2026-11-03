@@ -1,7 +1,7 @@
 """
 AutoHeal AI - Pipeline Orchestrator
-# Core Orchestrator: Deepak (Lead)
-Coordinates multi-vector detection, self-healing, visual analytics, and plain-English narrative insight generation.
+Coordinates multi-vector detection, self-healing, automated EDA, feature engineering,
+visual analytics, and plain-English narrative insight generation.
 """
 
 import time
@@ -15,17 +15,22 @@ from .detector import CorruptionDetector
 from .healer import SelfHealingEngine
 from .insights import PlainEnglishInsightEngine
 from .visualizer import VisualAnalyticsGenerator
+from .eda import ExploratoryDataAnalyzer
+from .features import FeatureEngineer
 
 
 class AutoHealPipeline:
     """
-    Main entry point for autonomous data ingestion, healing, visual analytics, and plain-English reporting.
+    Main entry point for autonomous data ingestion, healing, automated EDA,
+    bias-mitigating feature engineering, visual analytics, and plain-English reporting.
     """
 
     def __init__(self, config: Optional[PipelineConfig] = None):
         self.config = config or PipelineConfig()
         self.detector = CorruptionDetector(self.config)
         self.visualizer = VisualAnalyticsGenerator(self.config.reports_dir)
+        self.eda_analyzer = ExploratoryDataAnalyzer()
+        self.feature_engineer = FeatureEngineer()
 
     def process(
         self,
@@ -33,7 +38,8 @@ class AutoHealPipeline:
         dataset_name: Optional[str] = None
     ) -> Dict[str, Any]:
         """
-        Executes end-to-end autonomous pipeline on file path or DataFrame.
+        Executes end-to-end autonomous pipeline on file path or DataFrame:
+        Ingestion -> Diagnostic -> 7-Pass Healing -> Automated EDA -> Feature Engineering -> Insights -> Dashboard
         """
         start_time = time.time()
 
@@ -65,7 +71,7 @@ class AutoHealPipeline:
         # Step 2: Diagnostic Anomaly Detection
         initial_telemetry = self.detector.detect_all(raw_df)
 
-        # Step 3: Autonomous Self-Healing
+        # Step 3: Autonomous Self-Healing & Preprocessing
         ledger = HealingLedger(dataset_name=dataset_name)
         healer = SelfHealingEngine(self.config, ledger)
         healed_df, populated_ledger = healer.heal(raw_df)
@@ -74,11 +80,23 @@ class AutoHealPipeline:
         print(f"[AutoHealPipeline] Healing completed: {ledger_summary['total_healing_actions']} actions executed.")
         print(f"[AutoHealPipeline] Health Score: {ledger_summary['initial_health_score']}/100 -> {ledger_summary['final_health_score']}/100 (+{ledger_summary['score_improvement']} pts)")
 
-        # Step 4: Autonomous Plain-English Insight Generation
+        # Step 4: Automated Exploratory Data Analysis (EDA)
+        eda_results = self.eda_analyzer.analyze(healed_df)
+        num_profiles = len(eda_results["univariate"]["numerical_profiles"])
+        cat_profiles = len(eda_results["univariate"]["categorical_profiles"])
+        corrs = len(eda_results["bivariate"]["numeric_correlations"])
+        collin = len(eda_results["multivariate"]["multicollinearity_warnings"])
+        print(f"[AutoHealPipeline] Automated EDA completed: Univariate ({num_profiles} num, {cat_profiles} cat), Bivariate ({corrs} pairs), Multivariate ({collin} collinearity warnings).")
+
+        # Step 5: Bias-Mitigating Feature Engineering
+        ml_features_df, fe_summary = self.feature_engineer.transform(healed_df)
+        print(f"[AutoHealPipeline] Feature Engineering: Generated {fe_summary['engineered_features_count']} bias-mitigating features ({len(healed_df.columns)} -> {len(ml_features_df.columns)} cols).")
+
+        # Step 6: Autonomous Plain-English Insight Generation
         insight_engine = PlainEnglishInsightEngine(dataset_name=dataset_name)
         insights = insight_engine.generate_all_insights(raw_df, healed_df, populated_ledger)
 
-        # Step 5: Instant Visual Analytics Dashboard Generation
+        # Step 7: Instant Visual Analytics Dashboard Generation
         dashboard_filename = f"{dataset_name}_dashboard.html"
         dashboard_path = self.visualizer.generate_dashboard(
             dataset_name=dataset_name,
@@ -89,17 +107,27 @@ class AutoHealPipeline:
             output_filename=dashboard_filename
         )
 
-        # Step 6: Export Sanitized Data and Reports
+        # Step 8: Export Sanitized Data, Engineered Features, and Telemetry
         self.config.healed_dir.mkdir(parents=True, exist_ok=True)
         self.config.reports_dir.mkdir(parents=True, exist_ok=True)
 
         healed_csv_path = self.config.healed_dir / f"{dataset_name}_healed.csv"
         healed_json_path = self.config.healed_dir / f"{dataset_name}_healed.json"
+        ml_features_csv_path = self.config.healed_dir / f"{dataset_name}_ml_features.csv"
+        eda_json_path = self.config.reports_dir / f"{dataset_name}_eda_profile.json"
+        fe_json_path = self.config.reports_dir / f"{dataset_name}_feature_engineering.json"
         insights_md_path = self.config.reports_dir / f"{dataset_name}_insights.md"
         audit_json_path = self.config.reports_dir / f"{dataset_name}_audit_ledger.json"
 
         healed_df.to_csv(healed_csv_path, index=False)
         healed_df.to_json(healed_json_path, orient="records", date_format="iso", indent=2)
+        ml_features_df.to_csv(ml_features_csv_path, index=False)
+
+        with open(eda_json_path, "w", encoding="utf-8") as f:
+            json.dump(eda_results, f, indent=2)
+
+        with open(fe_json_path, "w", encoding="utf-8") as f:
+            json.dump(fe_summary, f, indent=2)
 
         with open(insights_md_path, "w", encoding="utf-8") as f:
             f.write(insights["markdown_report"])
@@ -110,6 +138,8 @@ class AutoHealPipeline:
         duration = round(time.time() - start_time, 2)
         print(f"[AutoHealPipeline] All artifacts generated in {duration}s:")
         print(f"  - Healed Dataset: {healed_csv_path}")
+        print(f"  - ML Engineered Features: {ml_features_csv_path}")
+        print(f"  - Automated EDA Profile: {eda_json_path}")
         print(f"  - Visual Analytics Dashboard: {dashboard_path}")
         print(f"  - Plain-English Briefing: {insights_md_path}")
 
@@ -126,15 +156,21 @@ class AutoHealPipeline:
             "final_grade": ledger_summary["final_grade"],
             "total_repairs": ledger_summary["total_healing_actions"],
             "repairs_by_type": ledger_summary["issues_resolved_by_type"],
+            "eda": eda_results,
+            "feature_engineering": fe_summary,
             "insights": insights,
             "artifacts": {
                 "dashboard_html": str(dashboard_path),
                 "healed_csv": str(healed_csv_path),
                 "healed_json": str(healed_json_path),
+                "ml_features_csv": str(ml_features_csv_path),
+                "eda_json": str(eda_json_path),
+                "fe_json": str(fe_json_path),
                 "insights_md": str(insights_md_path),
                 "audit_json": str(audit_json_path)
             },
             "healed_df": healed_df,
+            "ml_features_df": ml_features_df,
             "ledger": populated_ledger
         }
 

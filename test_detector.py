@@ -98,5 +98,70 @@ class TestAutoHealPipeline(unittest.TestCase):
         self.assertEqual(summary["issues_resolved_by_type"].get("DUPLICATE_PURGED", 0), 1)
 
 
+    def test_header_collision_disambiguation(self):
+        """Test that duplicate normalized headers are disambiguated with monotonic suffixes."""
+        data = {
+            "User Name": ["Alice", "Bob"],
+            "User_Name": ["Engineer", "Scientist"],
+            "user_name": [101, 102]
+        }
+        df = pd.DataFrame(data)
+        ledger = HealingLedger()
+        healer = SelfHealingEngine(self.config, ledger)
+        healed_df, _ = healer.heal(df)
+
+        self.assertEqual(len(healed_df.columns), len(set(healed_df.columns)))
+        self.assertIn("user_name", healed_df.columns)
+        self.assertIn("user_name_2", healed_df.columns)
+        self.assertIn("user_name_3", healed_df.columns)
+
+    def test_high_missingness_column_drop(self):
+        """Test that columns exceeding max_missing_drop_threshold are safely dropped."""
+        n = 100
+        data = {
+            "valid_col": list(range(n)),
+            "mostly_missing": [1.0 if i < 5 else np.nan for i in range(n)]
+        }
+        df = pd.DataFrame(data)
+        ledger = HealingLedger()
+        healer = SelfHealingEngine(self.config, ledger)
+        healed_df, ledger = healer.heal(df)
+
+        self.assertIn("valid_col", healed_df.columns)
+        self.assertNotIn("mostly_missing", healed_df.columns)
+        summary = ledger.get_summary()
+        self.assertEqual(summary["issues_resolved_by_type"].get("COLUMN_DROPPED", 0), 1)
+
+    def test_automated_eda_engine(self):
+        """Test that automated EDA executes univariate, bivariate, and multivariate analysis."""
+        from detector import ExploratoryDataAnalyzer
+        df = CorruptedDataGenerator.generate_ecommerce_dataset(n_rows=100)
+        healer = SelfHealingEngine(self.config, HealingLedger())
+        clean_df, _ = healer.heal(df)
+
+        eda = ExploratoryDataAnalyzer()
+        results = eda.analyze(clean_df)
+
+        self.assertIn("univariate", results)
+        self.assertIn("bivariate", results)
+        self.assertIn("multivariate", results)
+        self.assertGreater(len(results["univariate"]["numerical_profiles"]), 0)
+        self.assertGreater(len(results["univariate"]["categorical_profiles"]), 0)
+
+    def test_feature_engineering_bias_mitigation(self):
+        """Test temporal cyclical, rare-class binning, and variance-stabilizing transforms."""
+        from detector import FeatureEngineer
+        df = CorruptedDataGenerator.generate_ecommerce_dataset(n_rows=100)
+        healer = SelfHealingEngine(self.config, HealingLedger())
+        clean_df, _ = healer.heal(df)
+
+        fe = FeatureEngineer()
+        transformed_df, summary = fe.transform(clean_df)
+
+        self.assertGreater(len(transformed_df.columns), len(clean_df.columns))
+        self.assertGreater(summary["engineered_features_count"], 0)
+        self.assertIn("robust_scaling_metadata", summary)
+
+
 if __name__ == "__main__":
     unittest.main()
